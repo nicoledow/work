@@ -30,5 +30,16 @@ function renderWorkouts(json){
         focus.innerText = `Focus: ${workout.focus}`
         div.appendChild(focus)
 
+        renderShowButton(workout)
+
     })
+}
+
+function renderShowButton(workout){
+  //create a button w/ a link to the workout's show page
+    //the workout's exercises will be shown there
+  let workoutDiv = document.getElementById(workout.id)
+  let button = document.createElement('button')
+  button.innerHTML = `<a href="${BASEURL}workouts/${workout.id}"> See Workout</a>`
+  workoutDiv.appendChild(button)
 }
