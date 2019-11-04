@@ -1,5 +1,3 @@
-require_relative '../serializers/workout_serializer'
-
 class WorkoutsController < ApplicationController
 
     def index
@@ -9,6 +7,6 @@ class WorkoutsController < ApplicationController
 
     def show
       workout = Workout.find_by_id(params[:id])
-      render json: workout
+      render json: workout, :include => {:lift_sets => {:only => [:exercise_id, :reps, :weight, :goal]}}
     end
 end
