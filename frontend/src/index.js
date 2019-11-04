@@ -8,6 +8,7 @@ function getWorkouts(){
     //is this step necessary? Isn't Rails already rendering JSON?
     .then(response => response.json())
     .then(json => renderWorkouts(json))
+    //.then(json => console.log(json))
 }
 
 function renderWorkouts(json){
@@ -16,5 +17,18 @@ function renderWorkouts(json){
         div.className = 'workoutCard'
         div.id = workout.id
         body.appendChild(div)
+
+        const workoutTitle = document.createElement('h2')
+        workoutTitle.innerText = workout.title
+        div.appendChild(workoutTitle)
+
+        const date = document.createElement('h4')
+        date.innerText = workout.date
+        div.appendChild(date)
+
+        const focus = document.createElement('h3')
+        focus.innerText = `Focus: ${workout.focus}`
+        div.appendChild(focus)
+
     })
 }
