@@ -42,4 +42,15 @@ function renderShowButton(workout){
   let button = document.createElement('button')
   button.innerHTML = `<a href="${BASEURL}workouts/${workout.id}"> See Workout</a>`
   workoutDiv.appendChild(button)
+
+  button.addEventListener('click', showWorkout(workout.id))
+}
+
+function showWorkout(id) {
+  //fetch to /workouts/:id and show info
+  fetch(`${BASEURL}workouts/${id}`)
+  .then(response => response.json())
+  .then(json => console.log(json))
+
+  //why is the json loading in the view??????
 }
