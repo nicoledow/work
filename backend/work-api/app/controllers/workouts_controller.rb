@@ -6,8 +6,5 @@ class WorkoutsController < ApplicationController
     end
 
     def show
-      workout = Workout.find_by_id(params[:id])
-      exercise_sets = ExerciseSet.find_by_workout_id(params[:id])
-      render json: exercise_sets
     end
 end
