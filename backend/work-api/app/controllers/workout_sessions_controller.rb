@@ -1,6 +1,6 @@
 class WorkoutSessionsController < ApplicationController
   def index
-    sessions = WorkoutSession.all
+    sessions = WorkoutSession.all.incomplete
     render json: sessions
   end
 end
