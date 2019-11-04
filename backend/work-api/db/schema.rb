@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_202446) do
+ActiveRecord::Schema.define(version: 2019_11_04_211029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "exercise_sets", force: :cascade do |t|
-    t.integer "exercise_id"
-    t.integer "workout_id"
-    t.integer "weight"
-    t.integer "reps"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "completed", default: false
-  end
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
@@ -32,11 +22,20 @@ ActiveRecord::Schema.define(version: 2019_11_04_202446) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "lift_sets", force: :cascade do |t|
+    t.integer "exercise_id"
+    t.integer "workout_id"
+    t.integer "reps", default: 0
+    t.integer "weight", default: 0
+    t.string "goal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "workouts", force: :cascade do |t|
     t.string "title"
     t.string "focus"
     t.string "date"
-    t.boolean "completed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

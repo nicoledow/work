@@ -4,7 +4,6 @@ class CreateWorkouts < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :focus
       t.string :date
-      t.boolean :completed, :default => false
 
       t.timestamps
     end
