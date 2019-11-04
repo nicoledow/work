@@ -1,10 +1,10 @@
-const BASEURL = 'http://localhost:3000/'
+const BASE_URL = 'http://localhost:3000/'
 const body = document.querySelector('body')
 
 document.addEventListener('DOMContentLoaded', getWorkouts());
 
 function getWorkouts(){
-    fetch(`${BASEURL}workouts`)
+    fetch(`${BASE_URL}workouts`)
     //is this step necessary? Isn't Rails already rendering JSON?
     .then(response => response.json())
     .then(json => renderWorkouts(json))
@@ -40,7 +40,7 @@ function renderShowButton(workout){
     //the workout's exercises will be shown there
   let workoutDiv = document.getElementById(workout.id)
   let button = document.createElement('button')
-  button.innerHTML = `<a href="${BASEURL}workouts/${workout.id}"> See Workout</a>`
+  button.innerHTML = `<a href="${BASE_URL}workouts/${workout.id}"> See Workout</a>`
   workoutDiv.appendChild(button)
 
   button.addEventListener('click', showWorkout(workout.id))
@@ -48,7 +48,7 @@ function renderShowButton(workout){
 
 function showWorkout(id) {
   //fetch to /workouts/:id and show info
-  fetch(`${BASEURL}workouts/${id}`)
+  fetch(`${BASE_URL}workouts/${id}`)
   .then(response => response.json())
   .then(json => console.log(json))
 
