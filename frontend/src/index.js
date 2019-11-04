@@ -7,8 +7,8 @@ function getWorkouts(){
     fetch(`${BASEURL}workouts`)
     //is this step necessary? Isn't Rails already rendering JSON?
     .then(response => response.json())
-    .then(json => renderWorkouts(json))
-    //.then(json => console.log(json))
+    //.then(json => renderWorkouts(json))
+    .then(json => console.log(json))
 }
 
 function renderWorkouts(json){
