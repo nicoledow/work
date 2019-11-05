@@ -181,12 +181,12 @@ function updateLiftSets(button) {
       "Accept": "application/json"
     },
     body: JSON.stringify({
-      reps: parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10)
+      reps: parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10),
       weight: parseInt(button.parentElement.parentElement.querySelector('input[name="actual-weight"]').value, 10)
     })
   })
-  .then(function(object)){
+  .then(function(object){
     console.log(object);
-  }
+  })
 }
 
