@@ -57,16 +57,5 @@ function fetchWorkout(id) {
   //.then(json => loadExercises(json))
 }
 
-function loadExercises(object) {
-  let workoutDiv = document.getElementById(object.id)
-  const ul = document.createElement('ul')
-  ul.className = 'exerciseList'
-  workoutDiv.appendChild(ul);
 
-  object.lift_sets.forEach(set => {
-    let li = document.createElement('li');
-    ul.appendChild(li);
-    
-  })
-}
 
