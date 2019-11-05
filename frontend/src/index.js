@@ -66,12 +66,15 @@ function loadExercises(object) {
   object.lift_sets.forEach(exercise => {
     let li = document.createElement('li');
     //li.innerHTML = fetchLiftSetInfo(exercise.id)
-    li.innerText = exercise.exercise_id
+    li.innerText = fetchLiftSetInfo(exercise.id)
     ul.appendChild(li);
   })
 }
 
-// function fetchLiftSetInfo(exercise_id) {
-//   //need to fetch to lift_set show page
-//     //need to RETURN html to go within <li> in loadExercises function
-// }
+function fetchLiftSetInfo(exercise_id) {
+  //need to fetch to lift_set show page
+    //need to RETURN html to go within <li> in loadExercises function
+  fetch(`${BASE_URL}/liftsets/${exercise_id}`)
+  .then(response => response.json())
+  .then(json => console.log(json))
+}
