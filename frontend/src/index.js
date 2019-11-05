@@ -40,17 +40,38 @@ function renderShowButton(workout){
     //the workout's exercises will be shown there
   let workoutDiv = document.getElementById(workout.id)
   let button = document.createElement('button')
-  button.innerHTML = `<a href="${BASE_URL}workouts/${workout.id}"> See Workout</a>`
+  button.innerHTML = 'See Workout'
   workoutDiv.appendChild(button)
 
-  button.addEventListener('click', showWorkout(workout.id))
+  button.addEventListener('click', (event) => {
+    event.preventDefault()
+    fetchWorkout(workout.id)
+  })
 }
 
-function showWorkout(id) {
+function fetchWorkout(id) {
   //fetch to /workouts/:id and show info
   fetch(`${BASE_URL}workouts/${id}`)
   .then(response => response.json())
-  .then(json => console.log(json))
-
-  //why is the json loading in the view??????
+  //.then(json => console.log(json))
+  .then(json => loadExercises(json))
 }
+
+function loadExercises(object) {
+  let workoutDiv = document.getElementById(object.id)
+  const ul = document.createElement('ul')
+  ul.className = 'exerciseList'
+  workoutDiv.appendChild(ul);
+
+  object.lift_sets.forEach(exercise => {
+    let li = document.createElement('li');
+    //li.innerHTML = fetchLiftSetInfo(exercise.id)
+    li.innerText = exercise.exercise_id
+    ul.appendChild(li);
+  })
+}
+
+// function fetchLiftSetInfo(exercise_id) {
+//   //need to fetch to lift_set show page
+//     //need to RETURN html to go within <li> in loadExercises function
+// }
