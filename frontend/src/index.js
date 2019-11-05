@@ -53,8 +53,8 @@ function fetchWorkout(id) {
   //fetch to /workouts/:id and show info
   fetch(`${BASE_URL}workouts/${id}`)
   .then(response => response.json())
-  //.then(json => console.log(json))
-  .then(json => loadExercises(json))
+  .then(json => console.log(json))
+  //.then(json => loadExercises(json))
 }
 
 function loadExercises(object) {
@@ -63,18 +63,10 @@ function loadExercises(object) {
   ul.className = 'exerciseList'
   workoutDiv.appendChild(ul);
 
-  object.lift_sets.forEach(exercise => {
+  object.lift_sets.forEach(set => {
     let li = document.createElement('li');
-    //li.innerHTML = fetchLiftSetInfo(exercise.id)
-    li.innerText = fetchLiftSetInfo(exercise.id)
     ul.appendChild(li);
+    
   })
 }
 
-function fetchLiftSetInfo(exercise_id) {
-  //need to fetch to lift_set show page
-    //need to RETURN html to go within <li> in loadExercises function
-  fetch(`${BASE_URL}/liftsets/${exercise_id}`)
-  .then(response => response.json())
-  .then(json => console.log(json))
-}
