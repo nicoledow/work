@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', getWorkouts());
 
 function getWorkouts(){
     fetch(`${BASE_URL}workouts`)
-    //is this step necessary? Isn't Rails already rendering JSON?
     .then(response => response.json())
     .then(json => renderWorkouts(json))
     //.then(json => console.log(json))
@@ -85,9 +84,40 @@ function showWorkoutInfo(object) {
 
 
 function beginWorkout(workout_id) {
-  //fetch workout show page
-  //need info on lift_sets with goals -- able to edit and save, mark as complete
-  
+  fetch(`${BASE_URL}/workouts/${workout_id}`)
+  .then(response => response.json())
+  .then(json => console.log(json))
+  .then(json => createWorkoutTable(json))
 }
 
+//Make a table that shows goal for liftsets, and has inputs to edit and save actual data
+function createWorkoutTable(object){
+  let workoutDiv = document.getElementById(object.id)
+
+  let table = document.createElement('table');
+  workoutDiv.appendChild(table);
+
+  let firstRow = document.createElement('tr')
+  table.appendChild(firstRow)
+  
+  let exerciseHeader = document.createElement('th');
+  exerciseHeader.innerText = 'Exercise:';
+  firstRow.appendChild(exerciseHeader);
+
+  let goalHeader = document.createElement('th');
+  goalHeader.innerText = 'Session Goal:';
+  firstRow.appendChild(goalHeader);
+
+  let actualHeader = document.createElement('th');
+  actualHeader.innerText = 'Actual:';
+  firstRow.appendChild(actualHeader);
+  
+  completeWorkoutTable(object);
+  // ^this should iterate thru exercises and lift sets to complete table/get ready for edits
+}
+
+function completeWorkoutTable(object) {
+  //need to iterate through exercises and liftsets to complete table rows
+
+}
 
