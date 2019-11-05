@@ -110,16 +110,51 @@ function createWorkoutTable(object){
   goalHeader.innerText = 'Session Goal:';
   firstRow.appendChild(goalHeader);
 
-  let actualHeader = document.createElement('th');
-  actualHeader.innerText = 'Actual:';
-  firstRow.appendChild(actualHeader);
+  let actualReps = document.createElement('th');
+  actualReps.innerText = 'Actual Reps:';
+  firstRow.appendChild(actualReps);
+
+  let actualWeight = document.createElement('th');
+  actualWeight.innerText = 'Actual Weight:';
+  firstRow.appendChild(actualWeight);
   
-  completeWorkoutTable(object);
-  // ^this should iterate thru exercises and lift sets to complete table/get ready for edits
+  completeWorkoutTable(object, table);
 }
 
-function completeWorkoutTable(object) {
-  //need to iterate through exercises and liftsets to complete table rows
+function completeWorkoutTable(object, table) {
+  //iterate through liftsets to complete table rows
+  object.lift_sets.forEach(set => {
+    const newTableRow = document.createElement('tr');
+    newTableRow.id = `lift-set-${set.id}`
+    table.appendChild(newTableRow);
 
+    const exerciseCell = document.createElement('td');
+    exerciseCell.innerText = `${set.exercise.name}`;
+    newTableRow.appendChild(exerciseCell);
+    
+    const goalCell = document.createElement('td');
+    goalCell.innerText = `${set.goal}`;
+    newTableRow.appendChild(goalCell);
+
+    generateLiftInputCells(object, newTableRow);
+  })
+}
+
+
+function generateLiftInputCells(object, row) {
+
+  const actualRepsCell = document.createElement('td');
+  const actualRepsInput = document.createElement('input');
+  actualRepsInput.setAttribute("type", "text");
+  actualRepsInput.setAttribute("name", "actual-reps");
+  row.appendChild(actualRepsCell);
+  actualRepsCell.appendChild(actualRepsInput);
+  
+  const actualWeightCell = document.createElement('td');
+  const actualWeightInput = document.createElement('input');
+  actualWeightInput.setAttribute("type", "text");
+  actualWeightInput.setAttribute("name", "actual-weight");
+  row.appendChild(actualWeightCell);
+  actualWeightCell.appendChild(actualWeightInput);
 }
 
