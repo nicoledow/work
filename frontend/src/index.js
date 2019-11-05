@@ -92,7 +92,7 @@ function beginWorkout(workout_id) {
   .then(json => createWorkoutTable(json))
 }
 
-//Make a table that shows goal for liftsets, and has inputs to edit and save actual data
+
 function createWorkoutTable(object){
   let workoutDiv = document.getElementById(object.id)
 
@@ -117,12 +117,14 @@ function createWorkoutTable(object){
   let actualWeight = document.createElement('th');
   actualWeight.innerText = 'Actual Weight:';
   firstRow.appendChild(actualWeight);
+
+  let saveColumn = document.createElement('th')
+  firstRow.appendChild(saveColumn);
   
   completeWorkoutTable(object, table);
 }
 
 function completeWorkoutTable(object, table) {
-  //iterate through liftsets to complete table rows
   object.lift_sets.forEach(set => {
     const newTableRow = document.createElement('tr');
     newTableRow.id = `lift-set-${set.id}`
@@ -138,8 +140,6 @@ function completeWorkoutTable(object, table) {
 
     generateLiftInputCells(object, newTableRow);
   })
-
-  generateSaveWorkoutButton(object);
 }
 
 
@@ -158,18 +158,20 @@ function generateLiftInputCells(object, row) {
   actualWeightInput.setAttribute("name", "actual-weight");
   row.appendChild(actualWeightCell);
   actualWeightCell.appendChild(actualWeightInput);
+
+  const saveCell = document.createElement('td');
+  row.appendChild(saveCell);
+
+  let button = document.createElement('input');
+  saveCell.appendChild(button)
+  button.setAttribute("type", "submit");
+  button.setAttribute("value", "Save");
+  button.addEventListener('submit', updateLiftSets(event));
+
 }
 
-function generateSaveWorkoutButton(object) {
-  let workoutDiv = document.getElementById(object.id);
-  let button = document.createElement('button');
-  button.innerText = 'Save Workout';
-  workoutDiv.appendChild(button)
 
-  //button.addEventListener('click', updateLiftSets(workoutDiv.querySelector('table'));
-}
-
-function updateLiftSets(table) {
+function updateLiftSets(saveButton) {
   //fetch patch req to each lift_set
 }
 
