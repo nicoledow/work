@@ -166,8 +166,10 @@ function generateLiftInputCells(object, row) {
   saveCell.appendChild(button)
   button.setAttribute("type", "submit");
   button.setAttribute("value", "Save");
-  button.addEventListener('submit', updateLiftSets(button));
-
+  button.addEventListener('submit', function(event){
+    event.preventDefault();
+    updateLiftSets(button);
+  });
 }
 
 

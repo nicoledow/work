@@ -7,6 +7,7 @@ class LiftsetsController < ApplicationController
 
   def update
     set = LiftSet.find_by_id(params[:id])
+    render json: set
   end
 
 
