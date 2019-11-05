@@ -53,9 +53,25 @@ function fetchWorkout(id) {
   //fetch to /workouts/:id and show info
   fetch(`${BASE_URL}workouts/${id}`)
   .then(response => response.json())
-  .then(json => console.log(json))
-  //.then(json => loadExercises(json))
+  //.then(json => console.log(json))
+  .then(json => showWorkoutInfo(json))
 }
+
+function showWorkoutInfo(object) {
+  const ul = document.createElement('ul');
+  ul.className = 'exerciseList';
+  let workoutDiv = document.getElementById(object.id);
+  workoutDiv.appendChild(ul);
+
+  object.exercises.forEach(exercise => {
+    const li = document.createElement('li')
+    li.innerText = exercise.name;
+    ul.appendChild(li);
+  })
+}
+
+//have a button that says 'start workout'
+//clicking that button will show lift_sets with goals and allow you to edit/mark them complete
 
 
 
