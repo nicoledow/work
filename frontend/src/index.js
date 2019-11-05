@@ -13,39 +13,52 @@ function getWorkouts(){
 
 function renderWorkouts(json){
     json.forEach(workout => {
-        const div = document.createElement('div')
-        div.className = 'workoutCard'
-        div.id = workout.id
-        body.appendChild(div)
+        const div = document.createElement('div');
+        div.className = 'workoutCard';
+        div.id = workout.id;
+        body.appendChild(div);
 
-        const workoutTitle = document.createElement('h2')
-        workoutTitle.innerText = workout.title
-        div.appendChild(workoutTitle)
+        const workoutTitle = document.createElement('h2');
+        workoutTitle.innerText = workout.title;
+        div.appendChild(workoutTitle);
 
         const date = document.createElement('h4')
-        date.innerText = workout.date
-        div.appendChild(date)
+        date.innerText = workout.date;
+        div.appendChild(date);
 
-        const focus = document.createElement('h3')
-        focus.innerText = `Focus: ${workout.focus}`
-        div.appendChild(focus)
+        const focus = document.createElement('h3');
+        focus.innerText = `Focus: ${workout.focus}`;
+        div.appendChild(focus);
 
-        renderShowButton(workout)
+        renderShowButton(workout);
+        renderStartWorkoutButton(workout);
 
     })
 }
 
-function renderShowButton(workout){
+function renderShowButton(workoutObj){
   //create a button w/ a link to the workout's show page
     //the workout's exercises will be shown there
-  let workoutDiv = document.getElementById(workout.id)
+  let workoutDiv = document.getElementById(workoutObj.id)
   let button = document.createElement('button')
-  button.innerHTML = 'See Workout'
+  button.innerText = 'See Workout'
   workoutDiv.appendChild(button)
 
   button.addEventListener('click', (event) => {
     event.preventDefault()
-    fetchWorkout(workout.id)
+    fetchWorkout(workoutObj.id)
+  })
+}
+
+function renderStartWorkoutButton(workoutObj) {
+  let workoutDiv = document.getElementById(workoutObj.id);
+  let button = document.createElement('button');
+  button.innerText = 'Begin Workout'
+  workoutDiv.appendChild(button);
+
+  button.addEventListener('click', (event) => {
+    event.preventDefault();
+    beginWorkout(workoutObj.id)
   })
 }
 
@@ -70,8 +83,11 @@ function showWorkoutInfo(object) {
   })
 }
 
-//have a button that says 'start workout'
-//clicking that button will show lift_sets with goals and allow you to edit/mark them complete
 
+function beginWorkout(workout_id) {
+  //fetch workout show page
+  //need info on lift_sets with goals -- able to edit and save, mark as complete
+  
+}
 
 
