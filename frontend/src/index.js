@@ -44,7 +44,8 @@ function renderShowButton(workoutObj){
   workoutDiv.appendChild(button)
 
   button.addEventListener('click', (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    button.remove();
     fetchWorkout(workoutObj.id)
   })
 }
@@ -57,6 +58,7 @@ function renderStartWorkoutButton(workoutObj) {
 
   button.addEventListener('click', (event) => {
     event.preventDefault();
+    button.remove();
     beginWorkout(workoutObj.id)
   })
 }
@@ -86,7 +88,7 @@ function showWorkoutInfo(object) {
 function beginWorkout(workout_id) {
   fetch(`${BASE_URL}/workouts/${workout_id}`)
   .then(response => response.json())
-  .then(json => console.log(json))
+  //.then(json => console.log(json))
   .then(json => createWorkoutTable(json))
 }
 
