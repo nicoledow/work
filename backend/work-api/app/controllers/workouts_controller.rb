@@ -8,12 +8,11 @@ class WorkoutsController < ApplicationController
     def show
       workout = Workout.find_by_id(params[:id])
       render json: workout, :include => {:exercises => 
-          {:only => [:name]},
+          {:only => [:name, :id]},
         :lift_sets => {
-          :except => [:created_at, :updated_at],
-          :include => [:exercise]
+          :include => [:exercise],
+          :except => [:created_at, :updated_at]
         }
-        }
-
+      }
     end
 end
