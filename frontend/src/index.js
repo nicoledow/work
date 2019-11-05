@@ -138,6 +138,8 @@ function completeWorkoutTable(object, table) {
 
     generateLiftInputCells(object, newTableRow);
   })
+
+  generateSaveWorkoutButton(object);
 }
 
 
@@ -156,5 +158,18 @@ function generateLiftInputCells(object, row) {
   actualWeightInput.setAttribute("name", "actual-weight");
   row.appendChild(actualWeightCell);
   actualWeightCell.appendChild(actualWeightInput);
+}
+
+function generateSaveWorkoutButton(object) {
+  let workoutDiv = document.getElementById(object.id);
+  let button = document.createElement('button');
+  button.innerText = 'Save Workout';
+  workoutDiv.appendChild(button)
+
+  //button.addEventListener('click', updateLiftSets(workoutDiv.querySelector('table'));
+}
+
+function updateLiftSets(table) {
+  //fetch patch req to each lift_set
 }
 
