@@ -3,6 +3,8 @@ const body = document.querySelector('body')
 
 document.addEventListener('DOMContentLoaded', getWorkouts());
 
+document.getElementById('new-workout-btn').addEventListener('click', renderNewWorkoutForm());
+
 function getWorkouts(){
     fetch(`${BASE_URL}workouts`)
     .then(response => response.json())
