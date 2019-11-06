@@ -75,10 +75,8 @@ function renderStartWorkoutButton(workoutObj) {
 }
 
 function fetchWorkout(id) {
-  //fetch to /workouts/:id and show info
   fetch(`${BASE_URL}workouts/${id}`)
   .then(response => response.json())
-  //.then(json => console.log(json))
   .then(json => showWorkoutInfo(json))
 }
 

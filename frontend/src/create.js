@@ -1,5 +1,6 @@
 const renderNewWorkoutForm = function() {
     let newDiv = document.createElement('div');
+    newDiv.id = 'new-workout-div'
     headerDiv.appendChild(newDiv);
 
     let newForm = document.createElement('form');
@@ -30,7 +31,7 @@ const renderNewWorkoutForm = function() {
 
     newForm.addEventListener('submit', function(event) {
         submitNewWorkout(newForm);
-        generateLiftSetForm(newDiv);
+        generateLiftSetForm();
     })
 }
 
@@ -53,7 +54,8 @@ function submitNewWorkout(form) {
   })
 }
 
-function generateLiftSetForm(div) {
+function generateLiftSetForm() {
+  let div = document.getElementById('new-workout-div');
   let liftSetForm = document.createElement('form');
   div.appendChild(liftSetForm);
 
