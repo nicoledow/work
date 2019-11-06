@@ -21,7 +21,7 @@ const renderNewWorkoutForm = function() {
     focusInput.setAttribute("type", "text");
     focusInput.setAttribute("name", "focus");
     focusInput.setAttribute("value", "Workout Focus");
-    newForm.appendChild(focusInput)
+    newForm.appendChild(focusInput);
 
     let submitButton = document.createElement('input');
     submitButton.setAttribute("type", "submit");
@@ -30,8 +30,9 @@ const renderNewWorkoutForm = function() {
 
     newForm.addEventListener('submit', function(event) {
         submitNewWorkout(newForm);
-    }
-    )}
+        generateLiftSetForm(newDiv);
+    })
+}
 
 function submitNewWorkout(form) {
   fetch(`${BASE_URL}workouts/new`, {
@@ -50,4 +51,15 @@ function submitNewWorkout(form) {
   .then(function(object){
       console.log(object);
   })
+}
+
+function generateLiftSetForm(div) {
+  let liftSetForm = document.createElement('form');
+  div.appendChild(liftSetForm);
+
+  let exerciseInput = document.createElement('input');
+  exerciseInput.setAttribute("type", "text");
+  exerciseInput.setAttribute("name", "exercise");
+  exerciseInput.setAttribute("value", "Exercise");
+  liftSetForm.appendChild(exerciseInput);
 }
