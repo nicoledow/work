@@ -172,8 +172,7 @@ function generateLiftInputCells(object, row) {
   });
 }
 
-//should update the set in the database with actual # of reps and weight
-//UPDATE FUNCTION CURRENTLY NOT WORKING!?!
+
 function updateLiftSets(button) {
   let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);
   let newReps = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10);
