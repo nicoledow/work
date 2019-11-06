@@ -197,9 +197,6 @@ function updateLiftSets(button) {
   .then(function(response){
     return response.json();
   })
-  .then(function(object){
-    console.log(object);
-  })
   .catch(function(error){
     alert("Update failed!")
     console.log(error);
