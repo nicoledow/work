@@ -15,4 +15,14 @@ class WorkoutsController < ApplicationController
         }
       }
     end
+
+    def create
+      new_workout = Workout.create(workout_params)
+      render json: new_workout
+    end
+
+  private
+  def workout_params
+    params.permit(:title, :date, :focus)
+  end
 end
