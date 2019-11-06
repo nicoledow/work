@@ -49,8 +49,11 @@ function submitNewWorkout(form) {
       })
   })
   .then(response => response.json())
+  //implements object orientation:
   .then(function(object){
       console.log(object);
+      //const workout = new Workout(object);
+      //list.innerHTML += workout.render();
   })
 }
 

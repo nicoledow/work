@@ -1,8 +1,9 @@
 const BASE_URL = 'http://localhost:3000/'
-const BODY = document.querySelector('body')
 const headerDiv = document.getElementById('header-div') 
+const body = document.querySelector('body');
+const workoutContainer = document.getElementById('workout-container');
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   renderNewWorkoutButton();
   getWorkouts();
 });
@@ -28,7 +29,7 @@ function renderWorkouts(json){
         const div = document.createElement('div');
         div.className = 'workoutCard';
         div.id = workout.id;
-        BODY.appendChild(div);
+        workoutContainer.appendChild(div);
 
         const workoutTitle = document.createElement('h2');
         workoutTitle.innerText = workout.title;
@@ -44,6 +45,11 @@ function renderWorkouts(json){
 
         renderShowButton(workout);
         renderStartWorkoutButton(workout);
+
+        //goal:
+        //forEach -- const workout = new Workout(json)
+        // workout.render();
+        //(replace code above with this stuff)
 
     })
 }
@@ -77,21 +83,27 @@ function renderStartWorkoutButton(workoutObj) {
 function fetchWorkout(id) {
   fetch(`${BASE_URL}workouts/${id}`)
   .then(response => response.json())
-  .then(json => showWorkoutInfo(json))
-}
-
-function showWorkoutInfo(object) {
-  const ul = document.createElement('ul');
-  ul.className = 'exerciseList';
-  let workoutDiv = document.getElementById(object.id);
-  workoutDiv.appendChild(ul);
-
-  object.exercises.forEach(exercise => {
-    const li = document.createElement('li')
-    li.innerText = exercise.name;
-    ul.appendChild(li);
+  //.then(json => showWorkoutInfo(json))
+  .then(function(object){
+    console.log(object);
+    //const workout = new Workout(object);
+    //workout.render();
   })
 }
+
+//replace this with render() object function:
+// function showWorkoutInfo(object) {
+//   const ul = document.createElement('ul');
+//   ul.className = 'exerciseList';
+//   let workoutDiv = document.getElementById(object.id);
+//   workoutDiv.appendChild(ul);
+
+//   object.exercises.forEach(exercise => {
+//     const li = document.createElement('li')
+//     li.innerText = exercise.name;
+//     ul.appendChild(li);
+//   })
+// }
 
 
 
