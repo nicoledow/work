@@ -172,19 +172,22 @@ function generateLiftInputCells(object, row) {
   });
 }
 
-
+//should update the set in the database with actual # of reps and weight
+//UPDATE FUNCTION CURRENTLY NOT WORKING!?!
 function updateLiftSets(button) {
-  //fetch patch req to lift_set 
   let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);
-  fetch(`${BASE_URL}/liftsets/${lift_set_id}`, {
+  let newReps = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10);
+  let newWeight = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-weight"]').value, 10);
+
+  fetch(`${BASE_URL}liftsets/${lift_set_id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
     body: JSON.stringify({
-      reps: parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10),
-      weight: parseInt(button.parentElement.parentElement.querySelector('input[name="actual-weight"]').value, 10)
+      "reps": newReps,
+      "weight": newWeight
     })
   })
   .then(function(object){
