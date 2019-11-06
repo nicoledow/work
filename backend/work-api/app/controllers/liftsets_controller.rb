@@ -6,7 +6,6 @@ class LiftsetsController < ApplicationController
   end
 
   def update
-    #binding.pry
     set = LiftSet.find_by_id(params[:id])
     set.update(liftset_params)
     set.save
