@@ -1,6 +1,6 @@
-function renderNewWorkoutForm() {
-    console.log('hit renderNewWorkoutForm func')
+const renderNewWorkoutForm = function() {
     let newDiv = document.createElement('div');
+    headerDiv.appendChild(newDiv);
 
     let newForm = document.createElement('form');
     newForm.setAttribute("method", "post");
@@ -27,5 +27,5 @@ function renderNewWorkoutForm() {
     submitButton.setAttribute("value", "Create");
     newForm.appendChild(submitButton);
 
-    newForm.addEventListener('submit', renderNewLiftSetForm());
+    //newForm.addEventListener('submit', renderNewLiftSetForm());
 }

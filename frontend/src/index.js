@@ -1,11 +1,19 @@
 const BASE_URL = 'http://localhost:3000/'
 const BODY = document.querySelector('body')
+const headerDiv = document.getElementById('header-div') 
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderNewWorkoutButton();
   getWorkouts();
-  addEventListenerToPlanWorkout();
 });
 
+function renderNewWorkoutButton() {
+  let button = document.createElement('button');
+  headerDiv.appendChild(button);
+  button.innerText = 'Plan a New Workout';
+  
+  button.addEventListener('click', renderNewWorkoutForm);
+}
 
 
 function getWorkouts(){
@@ -20,7 +28,7 @@ function renderWorkouts(json){
         const div = document.createElement('div');
         div.className = 'workoutCard';
         div.id = workout.id;
-        body.appendChild(div);
+        BODY.appendChild(div);
 
         const workoutTitle = document.createElement('h2');
         workoutTitle.innerText = workout.title;
