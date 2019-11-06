@@ -1,9 +1,12 @@
 const BASE_URL = 'http://localhost:3000/'
-const body = document.querySelector('body')
+const BODY = document.querySelector('body')
 
-document.addEventListener('DOMContentLoaded', getWorkouts());
+document.addEventListener('DOMContentLoaded', () => {
+  getWorkouts();
+  addEventListenerToPlanWorkout();
+});
 
-document.getElementById('new-workout-btn').addEventListener('click', renderNewWorkoutForm());
+
 
 function getWorkouts(){
     fetch(`${BASE_URL}workouts`)
