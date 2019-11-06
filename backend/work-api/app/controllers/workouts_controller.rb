@@ -2,7 +2,13 @@ class WorkoutsController < ApplicationController
 
     def index
       workouts = Workout.incomplete
-      render json: workouts
+      render json: workouts, :include => {:exercises => 
+      {:only => [:name, :id]},
+    :lift_sets => {
+      :include => [:exercise],
+      :except => [:created_at, :updated_at]
+    }
+  }
     end
 
     def show
