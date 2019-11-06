@@ -6,8 +6,21 @@ class Workout {
     }
 
     render(object) {
-        //this method should generate the content for the workout's div on the page
-          //occurs after fetch post req.
+        let div = document.createElement('div');
+        div.className = 'card';
+        div.id = object.id;
+        workoutContainer.appendChild(div);
         
+        let workoutTitle = document.createElement('h2');
+        workoutTitle.innerText = object.title;
+        div.appendChild(workoutTitle);
+                        
+        let date = document.createElement('h4')
+        date.innerText = object.date;
+        div.appendChild(date);
+        
+        let focus = document.createElement('h3');
+        focus.innerText = `Focus: ${object.focus}`;
+        div.appendChild(focus);
     }
 }

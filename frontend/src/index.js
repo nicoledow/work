@@ -20,39 +20,44 @@ function renderNewWorkoutButton() {
 function getWorkouts(){
     fetch(`${BASE_URL}workouts`)
     .then(response => response.json())
-    .then(json => renderWorkouts(json))
     //.then(json => console.log(json))
+    .then(json => {
+      json.forEach(workoutObj => {
+        const newWorkout = new Workout(workoutObj.title, workoutObj.date, workoutObj.focus);
+        newWorkout.render(workoutObj);
+      })
+    })
 }
 
-function renderWorkouts(json){
-    json.forEach(workout => {
-        const div = document.createElement('div');
-        div.className = 'workoutCard';
-        div.id = workout.id;
-        workoutContainer.appendChild(div);
+// function renderWorkouts(json){
+//     json.forEach(workout => {
+        // const div = document.createElement('div');
+        // div.className = 'workoutCard';
+        // div.id = workout.id;
+        // workoutContainer.appendChild(div);
 
-        const workoutTitle = document.createElement('h2');
-        workoutTitle.innerText = workout.title;
-        div.appendChild(workoutTitle);
+        // const workoutTitle = document.createElement('h2');
+        // workoutTitle.innerText = workout.title;
+        // div.appendChild(workoutTitle);
 
-        const date = document.createElement('h4')
-        date.innerText = workout.date;
-        div.appendChild(date);
+        // const date = document.createElement('h4')
+        // date.innerText = workout.date;
+        // div.appendChild(date);
 
-        const focus = document.createElement('h3');
-        focus.innerText = `Focus: ${workout.focus}`;
-        div.appendChild(focus);
+        // const focus = document.createElement('h3');
+        // focus.innerText = `Focus: ${workout.focus}`;
+        // div.appendChild(focus);
 
-        renderShowButton(workout);
-        renderStartWorkoutButton(workout);
+        // renderShowButton(workout);
+        // renderStartWorkoutButton(workout);
 
         //goal:
         //forEach -- const workout = new Workout(json)
         // workout.render();
         //(replace code above with this stuff)
 
-    })
-}
+//     })
+// }
 
 function renderShowButton(workoutObj){
   let workoutDiv = document.getElementById(workoutObj.id)
