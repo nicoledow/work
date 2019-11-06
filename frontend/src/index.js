@@ -166,7 +166,7 @@ function generateLiftInputCells(object, row) {
   saveCell.appendChild(button)
   button.setAttribute("type", "submit");
   button.setAttribute("value", "Save");
-  button.addEventListener('submit', function(event){
+  button.addEventListener('click', function(event){
     event.preventDefault();
     updateLiftSets(button);
   });
@@ -179,6 +179,10 @@ function updateLiftSets(button) {
   let newReps = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10);
   let newWeight = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-weight"]').value, 10);
 
+  console.log(lift_set_id);
+  console.log(newReps);
+  console.log(newWeight);
+
   fetch(`${BASE_URL}liftsets/${lift_set_id}`, {
     method: "PATCH",
     headers: {
@@ -190,8 +194,15 @@ function updateLiftSets(button) {
       "weight": newWeight
     })
   })
+  .then(function(response){
+    return response.json();
+  })
   .then(function(object){
     console.log(object);
+  })
+  .catch(function(error){
+    alert("Update failed!")
+    console.log(error);
   })
 }
 
