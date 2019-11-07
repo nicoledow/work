@@ -2,6 +2,8 @@ class LiftSet < ApplicationRecord
     belongs_to :workout
     belongs_to :exercise
 
+    default_scope {order("created_at DESC")}
+
     def get_exercise_name
       exercise = Exercise.find_by_id(self.exercise_id)
       exercise.name
