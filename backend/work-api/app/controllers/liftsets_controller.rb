@@ -19,7 +19,8 @@ class LiftsetsController < ApplicationController
       new_set.save
     end
     lift_sets = LiftSet.narrow_by_workout(params[:workout_id])
-    render json: lift_sets
+    render json: lift_sets, :include => {:exercise => 
+    {:only => [:name, :id]}}
   end
 
   def update

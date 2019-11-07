@@ -77,8 +77,13 @@ class Api {
            return response.json();
          })
          .then(function(object){
-           //what should I do here???
-           console.log(object)
+           console.log(object);
+           const set = new LiftSet(object[0].reps, object[0].weight, object[0].goal)
+           set.addSetHTMLToDiv(object, form.parentElement)
+         })
+         .catch(function(error){
+           alert("An error occurred. Please try again.");
+           console.log(error.message);
          })
        }
 

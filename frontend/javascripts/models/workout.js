@@ -36,7 +36,7 @@ class Workout {
         button.addEventListener('click', (event) => {
           event.preventDefault();
           button.remove();
-          this.begin(workoutObj.id);
+          Workout.begin(workoutObj.id);
         })
       }
 
@@ -50,16 +50,16 @@ class Workout {
         })
       }
 
-      begin(workout_id) {
+      static begin(workout_id) {
         fetch(`${BASE_URL}/workouts/${workout_id}`)
         .then(response => response.json())
         //.then(json => console.log(json))
-        .then(json => this.renderTable(json))
+        .then(json => Workout.renderTable(json))
       }
 
-      renderTable(object){
-        let workoutDiv = document.getElementById(object.id)
-      
+      static renderTable(object){
+        const workoutDiv = document.getElementById(object.id);
+       
         let table = document.createElement('table');
         workoutDiv.appendChild(table);
 
@@ -96,10 +96,10 @@ class Workout {
         let saveColumn = document.createElement('th')
         firstRow.appendChild(saveColumn);
 
-        this.completeWorkoutTable(object, table);
+        Workout.completeWorkoutTable(object, table);
       }
 
-      completeWorkoutTable(object, table) {
+      static completeWorkoutTable(object, table) {
         object.lift_sets.forEach(set => {
           const newTableRow = document.createElement('tr');
           newTableRow.id = `lift-set-${set.id}`
@@ -115,5 +115,16 @@ class Workout {
       
           generateLiftInputCells(object, newTableRow);
         })
+    }
+
+    static getWorkoutDiv(object) {
+      if(document.getElementById(object.id)){
+          const workoutDiv = document.getElementById(object.id);
+          return workoutDiv;
+        } else {
+          const workoutDiv = document.createElement('div');
+          workoutDiv.id = object.id;
+          return workoutDiv;
+        }
     }
 }
