@@ -23,22 +23,23 @@ class Workout {
         focus.innerText = `Focus: ${object.focus}`;
         div.appendChild(focus);
 
-        this.renderShowButton(object);
+        //this.renderShowButton(object);
         this.renderStartWorkoutButton(object);
     }
 
-    renderShowButton(workoutObj){
-        let workoutDiv = document.getElementById(workoutObj.id)
-        let button = document.createElement('button')
-        button.innerText = 'See Workout'
-        workoutDiv.appendChild(button)
+    // renderShowButton(workoutObj){
+    //     let workoutDiv = document.getElementById(workoutObj.id)
+    //     let button = document.createElement('button')
+    //     button.className = 'see-workout-btn';
+    //     button.innerText = 'See Workout';
+    //     workoutDiv.appendChild(button)
       
-        button.addEventListener('click', (event) => {
-          event.preventDefault();
-          button.remove();
-          this.fetchData(workoutObj.id);
-        })
-      }
+    //     button.addEventListener('click', (event) => {
+    //       event.preventDefault();
+    //       button.remove();
+    //       this.fetchData(workoutObj.id);
+    //     })
+    //   }
 
       renderStartWorkoutButton(workoutObj) {
         let workoutDiv = document.getElementById(workoutObj.id);
