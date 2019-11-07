@@ -56,61 +56,57 @@
   //}
   
   
-  function generateLiftInputCells(object, row) {
+  // function generateLiftInputCells(object, row) {
   
-    const actualRepsCell = document.createElement('td');
-    const actualRepsInput = document.createElement('input');
-    actualRepsInput.setAttribute("type", "text");
-    actualRepsInput.setAttribute("name", "actual-reps");
-    row.appendChild(actualRepsCell);
-    actualRepsCell.appendChild(actualRepsInput);
+  //   const actualRepsCell = document.createElement('td');
+  //   const actualRepsInput = document.createElement('input');
+  //   actualRepsInput.setAttribute("type", "text");
+  //   actualRepsInput.setAttribute("name", "actual-reps");
+  //   row.appendChild(actualRepsCell);
+  //   actualRepsCell.appendChild(actualRepsInput);
     
-    const actualWeightCell = document.createElement('td');
-    const actualWeightInput = document.createElement('input');
-    actualWeightInput.setAttribute("type", "text");
-    actualWeightInput.setAttribute("name", "actual-weight");
-    row.appendChild(actualWeightCell);
-    actualWeightCell.appendChild(actualWeightInput);
+  //   const actualWeightCell = document.createElement('td');
+  //   const actualWeightInput = document.createElement('input');
+  //   actualWeightInput.setAttribute("type", "text");
+  //   actualWeightInput.setAttribute("name", "actual-weight");
+  //   row.appendChild(actualWeightCell);
+  //   actualWeightCell.appendChild(actualWeightInput);
   
-    const saveCell = document.createElement('td');
-    row.appendChild(saveCell);
+  //   const saveCell = document.createElement('td');
+  //   row.appendChild(saveCell);
   
-    let button = document.createElement('input');
-    saveCell.appendChild(button)
-    button.setAttribute("type", "submit");
-    button.setAttribute("value", "Save");
-    button.addEventListener('click', function(event){
-      event.preventDefault();
-      updateLiftSets(button);
-    });
-  }
+  //   let button = document.createElement('input');
+  //   saveCell.appendChild(button)
+  //   button.setAttribute("type", "submit");
+  //   button.setAttribute("value", "Save");
+  //   button.addEventListener('click', function(event){
+  //     event.preventDefault();
+  //     updateLiftSets(button);
+  //   });
+  // }
   
   
-  function updateLiftSets(button) {
-    let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);
-    let newReps = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10);
-    let newWeight = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-weight"]').value, 10);
+  // function updateLiftSets(button) {
+  //   let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);
+  //   let newReps = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10);
+  //   let newWeight = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-weight"]').value, 10);
   
-    console.log(lift_set_id);
-    console.log(newReps);
-    console.log(newWeight);
-  
-    fetch(`${BASE_URL}liftsets/${lift_set_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        "reps": newReps,
-        "weight": newWeight
-      })
-    })
-    .then(function(response){
-      return response.json();
-    })
-    .catch(function(error){
-      alert("Update failed!")
-      console.log(error);
-    })
-  }
+  //   fetch(`${BASE_URL}liftsets/${lift_set_id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       "Accept": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       "reps": newReps,
+  //       "weight": newWeight
+  //     })
+  //   })
+  //   .then(function(response){
+  //     return response.json();
+  //   })
+  //   .catch(function(error){
+  //     alert("Update failed!")
+  //     console.log(error);
+  //   })
+  // }
