@@ -5,9 +5,8 @@ class LiftSet {
       this.goal = goal;
   }
 
-  //called with a dummy new LiftSet object and workoutDiv(to be reference for workout_id)
-  generateForm(set, workoutDiv) {
-    //alert('hit generateForm')
+  //called with  workoutDiv(to be reference for workout_id)
+  generateForm(workoutDiv) {
     const setForm = document.createElement('form');
     workoutDiv.appendChild(setForm);
 
@@ -19,21 +18,25 @@ class LiftSet {
 
     const workoutIdInput = document.createElement('input');
     workoutIdInput.setAttribute("type", "hidden");
+    workoutIdInput.setAttribute("name", "workout_id");
     workoutIdInput.setAttribute("value", `${workoutDiv.id}`);
     setForm.appendChild(workoutIdInput);
 
     const goalInput = document.createElement('input');
     goalInput.setAttribute("type", "text");
+    goalInput.setAttribute("name", "goal");
     goalInput.setAttribute("value", "Goal");
     setForm.appendChild(goalInput);
 
     const repsInput = document.createElement('input');
     repsInput.setAttribute("type", "text");
+    repsInput.setAttribute("name", "reps");
     goalInput.setAttribute("value", "Reps");
     setForm.appendChild(repsInput);
 
     const weightInput = document.createElement('input');
     weightInput.setAttribute("type", "text");
+    weightInput.setAttribute("name", "weight");
     weightInput.setAttribute("value", "Weight");
     setForm.appendChild(weightInput);
 
@@ -41,6 +44,11 @@ class LiftSet {
     setSubmitButton.setAttribute("type", "submit")
     setSubmitButton.setAttribute("value", "Add");
     setForm.appendChild(setSubmitButton);
+    
+    setForm.addEventListener('submit', () => {
+      event.preventDefault();
+      api.submitNewLiftSet(setForm);
+    })
   }
 
 }

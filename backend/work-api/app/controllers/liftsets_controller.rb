@@ -5,12 +5,17 @@ class LiftsetsController < ApplicationController
     render json: set, :include => {:exercise => {:only => [:name]}}
   end
 
+  def create
+
+  end
+
   def update
     set = LiftSet.find_by_id(params[:id])
     set.update(liftset_params)
     set.save
     render json: set
   end
+
 
 private
   def liftset_params

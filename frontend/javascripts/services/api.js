@@ -57,6 +57,23 @@ class Api {
         })
        }
 
+       submitNewLiftSet(form) {
+         let workout_id = parseInt(form.querySelector('input[name="workout_id"]').value, 10);
+         let exercise = form.querySelector('input[name="exercise"]').value;
+         let goal = form.querySelector('input[name="goal"]').value;
+         let reps = parseInt(form.querySelector('input[name="reps"]').value, 10);
+         let weight = parseInt(form.querySelector('input[name="weight"]').value, 10);
+
+         fetch(`${BASE_URL}liftsets`, {
+           method: "POST",
+           headers: {
+             "Content-Type": "application/json",
+             "Accept": "application/json"
+           },
+           body: JSON.stringify({"workout_id": workout_id, "exercise": exercise, "goal": goal, "reps": reps, "weight": weight})
+         })
+       }
+
 }
 
 
