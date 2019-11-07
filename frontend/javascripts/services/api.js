@@ -27,9 +27,8 @@ class Api {
         })
         .then(response => response.json())
         .then(function(object){
-            console.log(object);
-            //const workout = new Workout(object);
-            //list.innerHTML += workout.render();
+            const workout = new Workout(object);
+            workoutContainer.innerHtml += workout.render(object);
         })
       }
 

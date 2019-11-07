@@ -4,13 +4,13 @@ const body = document.querySelector('body');
 const workoutContainer = document.getElementById('workout-container');
 const api = new Api;
 
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   api.getWorkouts();
   renderNewWorkoutButton();
 });
 
 
-function renderNewWorkoutForm() {
+const renderNewWorkoutForm = function() {
   let newDiv = document.createElement('div');
   newDiv.id = 'new-workout-div'
   headerDiv.appendChild(newDiv);
@@ -42,7 +42,8 @@ function renderNewWorkoutForm() {
   newForm.appendChild(submitButton);
 
   newForm.addEventListener('submit', function(event) {
-      submitNewWorkout(newForm);
+      event.preventDefault();
+      api.submitNewWorkout(newForm);
       generateLiftSetForm();
   })
 }
@@ -50,7 +51,9 @@ function renderNewWorkoutForm() {
 function renderNewWorkoutButton() {
   let button = document.createElement('button');
   headerDiv.appendChild(button);
+  button.id = 'new-workout-btn'
   button.innerText = 'Plan a New Workout';
   
-  button.addEventListener('click', renderNewWorkoutForm());
+ button.addEventListener('click', renderNewWorkoutForm);
 }
+
