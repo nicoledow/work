@@ -36,7 +36,7 @@ class Workout {
         button.addEventListener('click', (event) => {
           event.preventDefault();
           button.remove();
-          this.begin(workoutObj.id)
+          this.begin(workoutObj.id);
         })
       }
 
@@ -62,6 +62,17 @@ class Workout {
       
         let table = document.createElement('table');
         workoutDiv.appendChild(table);
+
+        let addSetButton = document.createElement('button');
+        table.appendChild(addSetButton);
+        addSetButton.innerText = 'Add a Set';
+        addSetButton.addEventListener('click', () => {
+          //let newSet = new LiftSet(0, 0, '');
+          event.preventDefault();
+          addSetButton.parentElement.removeChild(addSetButton.parentElement.querySelector('button'));
+          let newSet = new LiftSet(0, 0, '');
+          newSet.generateForm()
+        })
       
         let firstRow = document.createElement('tr')
         table.appendChild(firstRow)
@@ -84,7 +95,7 @@ class Workout {
       
         let saveColumn = document.createElement('th')
         firstRow.appendChild(saveColumn);
-        
+
         this.completeWorkoutTable(object, table);
       }
 

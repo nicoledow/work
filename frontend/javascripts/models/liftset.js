@@ -5,4 +5,8 @@ class LiftSet {
       this.goal = goal;
   }
 
+  generateForm() {
+    alert('hit LiftSet.generateForm method');
+  }
+
 }

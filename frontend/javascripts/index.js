@@ -85,5 +85,6 @@ function generateLiftInputCells(object, row) {
     event.preventDefault();
     app.updateLiftSets(button);
   });
+
 }    
 
