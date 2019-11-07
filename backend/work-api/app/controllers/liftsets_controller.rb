@@ -6,18 +6,19 @@ class LiftsetsController < ApplicationController
   end
 
   def create
-    lift_sets = LiftSet.narrow_by_workout(params[:workout_id])
-
+    #binding.pry
     if params[:exercise_id]
       LiftSet.create(liftset_params)
     else
       new_set = LiftSet.new
-      new_set.exercise_id = Exercise.find_or_create_by(name: liftset_params[:exercise])
+      new_set.exercise_id = Exercise.find_or_create_by(name: liftset_params[:exercise]).id
       new_set.workout_id = liftset_params[:workout_id]
       new_set.reps = liftset_params[:reps]
       new_set.weight = liftset_params[:weight]
+      new_set.goal = liftset_params[:goal]
       new_set.save
     end
+    lift_sets = LiftSet.narrow_by_workout(params[:workout_id])
     render json: lift_sets
   end
 
@@ -31,7 +32,7 @@ class LiftsetsController < ApplicationController
 
 private
   def liftset_params
-    params.permit(:exercise_id, :workout_id, :reps, :weight, :goal, :exercise)
+    params.require(:liftset).permit(:exercise_id, :workout_id, :reps, :weight, :goal, :exercise, :liftset)
   end
 
 end
