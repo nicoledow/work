@@ -102,7 +102,7 @@ class Workout {
           goalCell.innerText = `${set.goal}`;
           newTableRow.appendChild(goalCell);
       
-          LiftSet.generateInputCells(object, newTableRow);
+          generateLiftInputCells(object, newTableRow);
         })
     }
 
