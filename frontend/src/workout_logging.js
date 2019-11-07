@@ -1,9 +1,9 @@
-function beginWorkout(workout_id) {
-    fetch(`${BASE_URL}/workouts/${workout_id}`)
-    .then(response => response.json())
-    //.then(json => console.log(json))
-    .then(json => createWorkoutTable(json))
-  }
+// function beginWorkout(workout_id) {
+//     fetch(`${BASE_URL}/workouts/${workout_id}`)
+//     .then(response => response.json())
+//     //.then(json => console.log(json))
+//     .then(json => createWorkoutTable(json))
+//   }
   
   
   function createWorkoutTable(object){
