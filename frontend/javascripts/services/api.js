@@ -57,27 +57,6 @@ class Api {
         })
        }
 
-       generateNewLiftSetForm(workoutDiv) {
-         //button at bottom of workoutDiv
-           //when button is clicked, show liftset form
-        let button = document.createElement('button');
-        workoutDiv.appendChild(button);
-        button.innerText = 'Add a Set';
-        button.className = 'add-set';
-        //generateLiftInputCells(object, row)
-          //first instantiate a new instance of LiftSet
-            //^us this to: get object from running an empty fetch post req
-            //need to generate new row and pass that in
-        button.addEventListener('click', () => {
-          event.preventDefault();
-          button.parentElement.removeChild(workoutDiv.querySelector('button.add-set'));
-        })
-
-        //on submit, liftset form creates a new instance of LiftSet
-          //persists to db
-          //render new row in table
-       }
-
 }
 
 
