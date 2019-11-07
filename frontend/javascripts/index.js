@@ -44,7 +44,7 @@ const renderNewWorkoutForm = function() {
   newForm.addEventListener('submit', function(event) {
       event.preventDefault();
       api.submitNewWorkout(newForm);
-      generateLiftSetForm();
+      LiftSet.generateLiftSetForm();
   })
 }
 
@@ -56,4 +56,34 @@ function renderNewWorkoutButton() {
   
  button.addEventListener('click', renderNewWorkoutForm);
 }
+
+
+
+function generateLiftInputCells(object, row) {
+  const actualRepsCell = document.createElement('td');
+  const actualRepsInput = document.createElement('input');
+  actualRepsInput.setAttribute("type", "text");
+  actualRepsInput.setAttribute("name", "actual-reps");
+  row.appendChild(actualRepsCell);
+  actualRepsCell.appendChild(actualRepsInput);
+  
+  const actualWeightCell = document.createElement('td');
+  const actualWeightInput = document.createElement('input');
+  actualWeightInput.setAttribute("type", "text");
+  actualWeightInput.setAttribute("name", "actual-weight");
+  row.appendChild(actualWeightCell);
+  actualWeightCell.appendChild(actualWeightInput);
+
+  const saveCell = document.createElement('td');
+  row.appendChild(saveCell);
+
+  let button = document.createElement('input');
+  saveCell.appendChild(button)
+  button.setAttribute("type", "submit");
+  button.setAttribute("value", "Save");
+  button.addEventListener('click', function(event){
+    event.preventDefault();
+    app.updateLiftSets(button);
+  });
+}    
 

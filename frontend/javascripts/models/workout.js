@@ -50,18 +50,6 @@ class Workout {
         })
       }
 
-      generateLiftSetForm() {
-        let div = document.getElementById('new-workout-div');
-        let liftSetForm = document.createElement('form');
-        div.appendChild(liftSetForm);
-      
-        let exerciseInput = document.createElement('input');
-        exerciseInput.setAttribute("type", "text");
-        exerciseInput.setAttribute("name", "exercise");
-        exerciseInput.setAttribute("value", "Exercise");
-        liftSetForm.appendChild(exerciseInput);
-      }
-
       begin(workout_id) {
         fetch(`${BASE_URL}/workouts/${workout_id}`)
         .then(response => response.json())
@@ -114,35 +102,35 @@ class Workout {
           goalCell.innerText = `${set.goal}`;
           newTableRow.appendChild(goalCell);
       
-          this.generateLiftInputCells(object, newTableRow);
+          LiftSet.generateInputCells(object, newTableRow);
         })
     }
 
-    generateLiftInputCells(object, row) {
-        const actualRepsCell = document.createElement('td');
-        const actualRepsInput = document.createElement('input');
-        actualRepsInput.setAttribute("type", "text");
-        actualRepsInput.setAttribute("name", "actual-reps");
-        row.appendChild(actualRepsCell);
-        actualRepsCell.appendChild(actualRepsInput);
+    // generateLiftInputCells(object, row) {
+    //     const actualRepsCell = document.createElement('td');
+    //     const actualRepsInput = document.createElement('input');
+    //     actualRepsInput.setAttribute("type", "text");
+    //     actualRepsInput.setAttribute("name", "actual-reps");
+    //     row.appendChild(actualRepsCell);
+    //     actualRepsCell.appendChild(actualRepsInput);
         
-        const actualWeightCell = document.createElement('td');
-        const actualWeightInput = document.createElement('input');
-        actualWeightInput.setAttribute("type", "text");
-        actualWeightInput.setAttribute("name", "actual-weight");
-        row.appendChild(actualWeightCell);
-        actualWeightCell.appendChild(actualWeightInput);
+    //     const actualWeightCell = document.createElement('td');
+    //     const actualWeightInput = document.createElement('input');
+    //     actualWeightInput.setAttribute("type", "text");
+    //     actualWeightInput.setAttribute("name", "actual-weight");
+    //     row.appendChild(actualWeightCell);
+    //     actualWeightCell.appendChild(actualWeightInput);
       
-        const saveCell = document.createElement('td');
-        row.appendChild(saveCell);
+    //     const saveCell = document.createElement('td');
+    //     row.appendChild(saveCell);
       
-        let button = document.createElement('input');
-        saveCell.appendChild(button)
-        button.setAttribute("type", "submit");
-        button.setAttribute("value", "Save");
-        button.addEventListener('click', function(event){
-          event.preventDefault();
-          app.updateLiftSets(button);
-        });
-      }    
+    //     let button = document.createElement('input');
+    //     saveCell.appendChild(button)
+    //     button.setAttribute("type", "submit");
+    //     button.setAttribute("value", "Save");
+    //     button.addEventListener('click', function(event){
+    //       event.preventDefault();
+    //       app.updateLiftSets(button);
+    //     });
+    //   }    
 }
