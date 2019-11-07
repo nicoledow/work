@@ -10,14 +10,6 @@ window.addEventListener('load', () => {
   app.renderNewWorkoutButton();
 });
 
-// renderNewWorkoutButton() {
-//   let button = document.createElement('button');
-//   headerDiv.appendChild(button);
-//   button.innerText = 'Plan a New Workout';
-  
-//   button.addEventListener('click', renderNewWorkoutForm());
-// }
-
 
 function getWorkouts(){
     fetch(`${BASE_URL}workouts`)
@@ -67,42 +59,3 @@ function renderNewWorkoutForm() {
       generateLiftSetForm();
   })
 }
-
-
-
-// function renderShowButton(workoutObj){
-//   let workoutDiv = document.getElementById(workoutObj.id)
-//   let button = document.createElement('button')
-//   button.innerText = 'See Workout'
-//   workoutDiv.appendChild(button)
-
-//   button.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     button.remove();
-//     fetchWorkout(workoutObj.id)
-//   })
-// }
-
-// function renderStartWorkoutButton(workoutObj) {
-//   let workoutDiv = document.getElementById(workoutObj.id);
-//   let button = document.createElement('button');
-//   button.innerText = 'Begin Workout'
-//   workoutDiv.appendChild(button);
-
-//   button.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     button.remove();
-//     beginWorkout(workoutObj.id)
-//   })
-// }
-
-// function fetchWorkout(id) {
-//   fetch(`${BASE_URL}workouts/${id}`)
-//   .then(response => response.json())
-//   //.then(json => showWorkoutInfo(json))
-//   .then(function(object){
-//     //console.log(object);
-//     const workout = new Workout(object);
-//     workout.render();
-//   })
-// }
