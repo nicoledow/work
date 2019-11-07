@@ -2,26 +2,13 @@ const BASE_URL = 'http://localhost:3000/'
 const headerDiv = document.getElementById('header-div') 
 const body = document.querySelector('body');
 const workoutContainer = document.getElementById('workout-container');
-const app = new App;
+const api = new Api;
 
 window.addEventListener('load', () => {
-  //is this necessary? :
-  getWorkouts();
-  app.renderNewWorkoutButton();
+  api.getWorkouts();
+  renderNewWorkoutButton();
 });
 
-
-function getWorkouts(){
-    fetch(`${BASE_URL}workouts`)
-    .then(response => response.json())
-    //.then(json => console.log(json))
-    .then(json => {
-      json.forEach(workoutObj => {
-        const newWorkout = new Workout(workoutObj.title, workoutObj.date, workoutObj.focus);
-        newWorkout.render(workoutObj);
-      })
-    })
-}
 
 function renderNewWorkoutForm() {
   let newDiv = document.createElement('div');
@@ -58,4 +45,12 @@ function renderNewWorkoutForm() {
       submitNewWorkout(newForm);
       generateLiftSetForm();
   })
+}
+
+function renderNewWorkoutButton() {
+  let button = document.createElement('button');
+  headerDiv.appendChild(button);
+  button.innerText = 'Plan a New Workout';
+  
+  button.addEventListener('click', renderNewWorkoutForm());
 }

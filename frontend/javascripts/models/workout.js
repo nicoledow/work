@@ -27,20 +27,6 @@ class Workout {
         this.renderStartWorkoutButton(object);
     }
 
-    // renderShowButton(workoutObj){
-    //     let workoutDiv = document.getElementById(workoutObj.id)
-    //     let button = document.createElement('button')
-    //     button.className = 'see-workout-btn';
-    //     button.innerText = 'See Workout';
-    //     workoutDiv.appendChild(button)
-      
-    //     button.addEventListener('click', (event) => {
-    //       event.preventDefault();
-    //       button.remove();
-    //       this.fetchData(workoutObj.id);
-    //     })
-    //   }
-
       renderStartWorkoutButton(workoutObj) {
         let workoutDiv = document.getElementById(workoutObj.id);
         let button = document.createElement('button');
@@ -57,7 +43,6 @@ class Workout {
       fetchData(id) {
         fetch(`${BASE_URL}workouts/${id}`)
         .then(response => response.json())
-        //.then(json => showWorkoutInfo(json))
         .then(function(object){
           //console.log(object);
           const workout = new Workout(object);
