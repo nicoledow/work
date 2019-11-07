@@ -45,7 +45,7 @@ class LiftSet {
     setSubmitButton.setAttribute("value", "Add");
     setForm.appendChild(setSubmitButton);
     
-    setForm.addEventListener('submit', () => {
+    setSubmitButton.addEventListener('click', function(event){
       event.preventDefault();
       api.submitNewLiftSet(setForm);
     })

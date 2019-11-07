@@ -71,7 +71,7 @@ class Workout {
           event.preventDefault();
           addSetButton.parentElement.removeChild(addSetButton.parentElement.querySelector('button'));
           let newSet = new LiftSet(0, 0, '');
-          newSet.generateForm(newSet, workoutDiv)
+          newSet.generateForm(workoutDiv)
         })
       
         let firstRow = document.createElement('tr')

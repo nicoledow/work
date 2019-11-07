@@ -58,6 +58,7 @@ class Api {
        }
 
        submitNewLiftSet(form) {
+         alert('hit api.submitNewLiftSet function');
          let workout_id = parseInt(form.querySelector('input[name="workout_id"]').value, 10);
          let exercise = form.querySelector('input[name="exercise"]').value;
          let goal = form.querySelector('input[name="goal"]').value;
@@ -71,6 +72,13 @@ class Api {
              "Accept": "application/json"
            },
            body: JSON.stringify({"workout_id": workout_id, "exercise": exercise, "goal": goal, "reps": reps, "weight": weight})
+         })
+         .then(function(response){
+           return response.json();
+         })
+         .then(function(object){
+           //what should I do here???
+           console.log(object)
          })
        }
 
