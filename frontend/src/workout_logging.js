@@ -6,54 +6,54 @@
 //   }
   
   
-  function createWorkoutTable(object){
-    let workoutDiv = document.getElementById(object.id)
+  // function createWorkoutTable(object){
+  //   let workoutDiv = document.getElementById(object.id)
   
-    let table = document.createElement('table');
-    workoutDiv.appendChild(table);
+  //   let table = document.createElement('table');
+  //   workoutDiv.appendChild(table);
   
-    let firstRow = document.createElement('tr')
-    table.appendChild(firstRow)
+  //   let firstRow = document.createElement('tr')
+  //   table.appendChild(firstRow)
     
-    let exerciseHeader = document.createElement('th');
-    exerciseHeader.innerText = 'Exercise:';
-    firstRow.appendChild(exerciseHeader);
+  //   let exerciseHeader = document.createElement('th');
+  //   exerciseHeader.innerText = 'Exercise:';
+  //   firstRow.appendChild(exerciseHeader);
   
-    let goalHeader = document.createElement('th');
-    goalHeader.innerText = 'Session Goal:';
-    firstRow.appendChild(goalHeader);
+  //   let goalHeader = document.createElement('th');
+  //   goalHeader.innerText = 'Session Goal:';
+  //   firstRow.appendChild(goalHeader);
   
-    let actualReps = document.createElement('th');
-    actualReps.innerText = 'Actual Reps:';
-    firstRow.appendChild(actualReps);
+  //   let actualReps = document.createElement('th');
+  //   actualReps.innerText = 'Actual Reps:';
+  //   firstRow.appendChild(actualReps);
   
-    let actualWeight = document.createElement('th');
-    actualWeight.innerText = 'Actual Weight:';
-    firstRow.appendChild(actualWeight);
+  //   let actualWeight = document.createElement('th');
+  //   actualWeight.innerText = 'Actual Weight:';
+  //   firstRow.appendChild(actualWeight);
   
-    let saveColumn = document.createElement('th')
-    firstRow.appendChild(saveColumn);
+  //   let saveColumn = document.createElement('th')
+  //   firstRow.appendChild(saveColumn);
     
-    completeWorkoutTable(object, table);
-  }
+  //   completeWorkoutTable(object, table);
+  // }
   
-  function completeWorkoutTable(object, table) {
-    object.lift_sets.forEach(set => {
-      const newTableRow = document.createElement('tr');
-      newTableRow.id = `lift-set-${set.id}`
-      table.appendChild(newTableRow);
+  // function completeWorkoutTable(object, table) {
+  //   object.lift_sets.forEach(set => {
+  //     const newTableRow = document.createElement('tr');
+  //     newTableRow.id = `lift-set-${set.id}`
+  //     table.appendChild(newTableRow);
   
-      const exerciseCell = document.createElement('td');
-      exerciseCell.innerText = `${set.exercise.name}`;
-      newTableRow.appendChild(exerciseCell);
+  //     const exerciseCell = document.createElement('td');
+  //     exerciseCell.innerText = `${set.exercise.name}`;
+  //     newTableRow.appendChild(exerciseCell);
       
-      const goalCell = document.createElement('td');
-      goalCell.innerText = `${set.goal}`;
-      newTableRow.appendChild(goalCell);
+  //     const goalCell = document.createElement('td');
+  //     goalCell.innerText = `${set.goal}`;
+  //     newTableRow.appendChild(goalCell);
   
-      generateLiftInputCells(object, newTableRow);
-    })
-  }
+  //     generateLiftInputCells(object, newTableRow);
+  //   })
+  //}
   
   
   function generateLiftInputCells(object, row) {

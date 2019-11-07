@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
 // }
 
 
-getWorkouts(){
+function getWorkouts(){
     fetch(`${BASE_URL}workouts`)
     .then(response => response.json())
     //.then(json => console.log(json))
@@ -31,7 +31,7 @@ getWorkouts(){
     })
 }
 
-function renderNewWorkoutForm {
+function renderNewWorkoutForm() {
   let newDiv = document.createElement('div');
   newDiv.id = 'new-workout-div'
   headerDiv.appendChild(newDiv);
