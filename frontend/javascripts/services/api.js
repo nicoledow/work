@@ -28,18 +28,18 @@ class Api {
     })
 }
 
-    submitNewWorkout(form) {
-      fetch(`${BASE_URL}workouts/new`, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-          },
-          body: JSON.stringify({
-              "title": form.querySelector('input[name="title"]').value,
-              "date": form.querySelector('input[name="date"]').value,
-              "focus": form.querySelector('input[name="focus"]').value
-          })
+  submitNewWorkout(form) {
+    fetch(`${BASE_URL}workouts/new`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "title": form.querySelector('input[name="title"]').value,
+          "date": form.querySelector('input[name="date"]').value,
+          "focus": form.querySelector('input[name="focus"]').value
+        })
       })
       .then(response => response.json())
       .then(function(object){
