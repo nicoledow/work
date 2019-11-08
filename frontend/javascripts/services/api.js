@@ -100,7 +100,11 @@ class Api {
            "Content-Type": "application/json",
            "Accept": "application/json"
          },
-         body: JSON.stringify({"workout_id": workout_id, "exercise": exercise, "goal": goal, "reps": reps, "weight": weight})
+         body: JSON.stringify({"workout_id": workout_id, 
+               "exercise": exercise, 
+               "goal": goal, 
+               "reps": reps, 
+               "weight": weight})
        })
        .then(function(response){
          return response.json();
