@@ -216,5 +216,38 @@ class App {
           app.generateLiftInputCells(object, newTableRow);
         })
     }
+
+    static renderEditForm(workout_id){
+      let form = document.createElement('form');
+      form.id = 'edit-workout-form';
+      document.getElementById(workout_id).appendChild(form);
+
+      let titleInput = document.createElement('input');
+      titleInput.setAttribute("type", "text");
+      titleInput.setAttribute("name", "title");
+      titleInput.setAttribute("value", "Workout Title");
+      form.appendChild(titleInput);
+
+      let dateInput = document.createElement('input');
+      dateInput.setAttribute("type", "text");
+      dateInput.setAttribute("name", "title");
+      dateInput.setAttribute("value", "Workout Date");
+      form.appendChild(dateInput);
+
+      let focusInput = document.createElement('input');
+      focusInput.setAttribute("type", "text");
+      focusInput.setAttribute("name", "focus");
+      focusInput.setAttribute("value", "Workout Focus");
+      form.appendChild(focusInput);
+
+      let workoutIdField = document.createElement('input');
+      workoutIdField.setAttribute("type", "hidden");
+      workoutIdField.setAttribute("value", workout_id);
+      form.appendChild(workoutIdField);
+
+      let submit = document.createElement('input');
+      submit.setAttribute("type", "submit");
+      form.appendChild(submit);
+    }
         
 }

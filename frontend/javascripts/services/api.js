@@ -19,7 +19,6 @@ class Api {
   getWorkouts(){
     fetch(`${BASE_URL}workouts`)
     .then(response => response.json())
-    //.then(json => console.log(json))
     .then(json => {
       json.forEach(workoutObj => {
         const newWorkout = new Workout(workoutObj.title, workoutObj.date, workoutObj.focus);
