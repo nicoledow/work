@@ -171,6 +171,7 @@ class App {
         const workoutDiv = document.getElementById(object.id);
        
         let table = document.createElement('table');
+        table.id = `${workoutDiv.id}-table`;
         workoutDiv.appendChild(table);
 
         let addSetButton = document.createElement('button');
