@@ -27,6 +27,19 @@ class WorkoutsController < ApplicationController
       render json: new_workout
     end
 
+    def update
+      workout = Workout.find_by_id(params[:id])
+      workout.update(workout_params)
+      workout.save
+      render json: workout, :include => {:exercises => 
+        {:only => [:name, :id]},
+      :lift_sets => {
+        :include => [:exercise],
+        :except => [:created_at, :updated_at]
+      }
+    }
+    end
+
   private
   def workout_params
     params.permit(:title, :date, :focus)

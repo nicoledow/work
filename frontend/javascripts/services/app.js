@@ -70,13 +70,15 @@ class App {
         button.setAttribute("value", "Save");
         button.addEventListener('click', function(event){
           event.preventDefault();
-          app.updateLiftSets(button);
+          api.updateLiftSets(button);
         });
       }
         
           //called with  workoutDiv(to be reference for workout_id)
     generateLiftForm(workoutDiv) {
         const setForm = document.createElement('form');
+        //dont think I need to reference workoutTable until data is actually submitted:
+        //const workoutTable = document.getElementById(`${workoutDiv.id}-table`);
         workoutDiv.appendChild(setForm);
         
         const exerciseInput = document.createElement('input');
@@ -95,15 +97,15 @@ class App {
         goalInput.setAttribute("name", "goal");
         setForm.appendChild(goalInput);
         
-        const repsInput = document.createElement('input');
-        repsInput.setAttribute("type", "text");
-        repsInput.setAttribute("name", "reps");
-        setForm.appendChild(repsInput);
+        // const repsInput = document.createElement('input');
+        // repsInput.setAttribute("type", "text");
+        // repsInput.setAttribute("name", "reps");
+        // setForm.appendChild(repsInput);
         
-        const weightInput = document.createElement('input');
-        weightInput.setAttribute("type", "text");
-        weightInput.setAttribute("name", "weight");
-        setForm.appendChild(weightInput);
+        // const weightInput = document.createElement('input');
+        // weightInput.setAttribute("type", "text");
+        // weightInput.setAttribute("name", "weight");
+        // setForm.appendChild(weightInput);
         
         const setSubmitButton = document.createElement('input');
         setSubmitButton.setAttribute("type", "submit")
@@ -137,13 +139,13 @@ class App {
         const workoutDiv = document.getElementById(object.id);
        
         let table = document.createElement('table');
+        table.id = `${workoutDiv.id}-table`;
         workoutDiv.appendChild(table);
 
         let addSetButton = document.createElement('button');
         table.appendChild(addSetButton);
         addSetButton.innerText = 'Add a Set';
         addSetButton.addEventListener('click', () => {
-          //let newSet = new LiftSet(0, 0, '');
           event.preventDefault();
           addSetButton.parentElement.removeChild(addSetButton.parentElement.querySelector('button'));
           let newSet = new LiftSet(0, 0, '');
@@ -191,6 +193,44 @@ class App {
       
           app.generateLiftInputCells(object, newTableRow);
         })
+    }
+
+    static renderEditForm(workout_id){
+      let form = document.createElement('form');
+      form.id = 'edit-workout-form';
+      document.getElementById(workout_id).appendChild(form);
+
+      let titleInput = document.createElement('input');
+      titleInput.setAttribute("type", "text");
+      titleInput.setAttribute("name", "title");
+      titleInput.setAttribute("value", "Workout Title");
+      form.appendChild(titleInput);
+
+      let dateInput = document.createElement('input');
+      dateInput.setAttribute("type", "text");
+      dateInput.setAttribute("name", "date");
+      dateInput.setAttribute("value", "Workout Date");
+      form.appendChild(dateInput);
+
+      let focusInput = document.createElement('input');
+      focusInput.setAttribute("type", "text");
+      focusInput.setAttribute("name", "focus");
+      focusInput.setAttribute("value", "Workout Focus");
+      form.appendChild(focusInput);
+
+      let workoutIdField = document.createElement('input');
+      workoutIdField.setAttribute("type", "hidden");
+      workoutIdField.setAttribute("value", workout_id);
+      form.appendChild(workoutIdField);
+
+      let submit = document.createElement('input');
+      submit.setAttribute("type", "submit");
+      form.appendChild(submit);
+
+      form.addEventListener('submit', function(event){
+        event.preventDefault();
+        api.updateWorkout(workout_id);
+      })
     }
         
 }

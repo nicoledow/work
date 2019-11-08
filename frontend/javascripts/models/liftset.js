@@ -5,36 +5,45 @@ class LiftSet {
     this.goal = goal;
   }
 
-  render(object) {
-    const workoutDiv = document.getElementById(object[0].workout_id);
+  renderRow(object) {
     console.log(object);
+    const table = document.getElementById(`${object.workout_id}-table`);
+    let row = document.createElement('tr');
+    row.id = `lift-set-${object.id}`
+    table.appendChild(row);
 
-    let newRow = document.createElement('tr');
-    workoutDiv.appendChild(newRow);
-    
-    let newExerciseCell = document.createElement('td');
-    newExerciseCell.innerText = `${object[0].exercise.name}`;
-    newRow.appendChild(newExerciseCell);
-    
-    let newGoalCell = document.createElement('td');
-    newGoalCell.innerText = `${object[0].goal}`;
-    newRow.appendChild(newGoalCell);
-    
-    let newRepsCell = document.createElement('td');
-    let newRepsInput = document.createElement('input');
-    newRepsInput.setAttribute("type", "text");
-    newRepsInput.setAttribute("name", "actual-reps");
-    newRepsInput.setAttribute("value", `${object[0].reps}`);
-    newRepsCell.appendChild(newRepsInput);
-    newRow.appendChild(newRepsCell);
-    
-    let newWeightCell = document.createElement('td');
-    let newWeightInput = document.createElement('input');
-    newWeightInput.setAttribute("type", "text");
-    newWeightInput.setAttribute("name", "actual-weight");
-    newWeightInput.setAttribute("value", `${object[0].weight}`);
-    newWeightCell.appendChild(newWeightInput);
-    newRow.appendChild(newWeightCell);
+    let exerciseCell = document.createElement('td');
+    row.appendChild(exerciseCell);
+    exerciseCell.innerText = object.exercise.name;
+
+    let goalCell = document.createElement('td');
+    row.appendChild(goalCell);
+    goalCell.innerText = object.goal;
+
+    let repsCell = document.createElement('td');
+    row.appendChild(repsCell);
+    let repsInput = document.createElement('input');
+    repsInput.setAttribute("type", "text");
+    repsInput.setAttribute("name", "actual-reps");
+    repsInput.setAttribute("value", `${parseInt(object.reps, 10)}`);
+    repsCell.appendChild(repsInput);
+
+    let weightCell = document.createElement('td');
+    row.appendChild(weightCell);
+    let weightInput = document.createElement('input');
+    weightInput.setAttribute("type", "text");
+    weightInput.setAttribute("name", "actual-weight");
+    weightInput.setAttribute("value", `${parseInt(object.weight, 10)}`)
+    weightCell.appendChild(weightInput);
+
+    let saveButton = document.createElement('td');
+    row.appendChild(saveButton);
+    saveButton.innerHTML = '<input type="submit" value="Save">';
+
+    saveButton.addEventListener('click', function(event){
+      event.preventDefault();
+      api.updateLiftSets(saveButton);
+    });
   }
 
 }
