@@ -10,11 +10,12 @@ class Api {
   }
 
   getWorkout(workout_id) {
-    console.log('in the api getworkout method')
     fetch(`${BASE_URL}/workouts/${workout_id}`)
     .then(response => response.json())
-    .then(json => function(json){
-      App.renderTable(json);
+    //.then(json => console.log(json))
+    //.then(json => App.renderTable(json))
+    .then(object => function(object){
+      App.renderTable(object);
     })
   }
 
@@ -41,18 +42,18 @@ class Api {
     })
 }
 
-  submitNewWorkout(form) {
-    fetch(`${BASE_URL}workouts/new`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          "title": form.querySelector('input[name="title"]').value,
-          "date": form.querySelector('input[name="date"]').value,
-          "focus": form.querySelector('input[name="focus"]').value
-        })
+    submitNewWorkout(form) {
+      fetch(`${BASE_URL}workouts/new`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          },
+          body: JSON.stringify({
+              "title": form.querySelector('input[name="title"]').value,
+              "date": form.querySelector('input[name="date"]').value,
+              "focus": form.querySelector('input[name="focus"]').value
+          })
       })
       .then(response => response.json())
       .then(function(object){

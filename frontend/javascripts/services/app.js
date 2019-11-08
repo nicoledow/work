@@ -118,20 +118,17 @@ class App {
         })
     }
 
-    renderWorkoutButtons(workoutObj) {
+    renderStartWorkoutButton(workoutObj) {
         let workoutDiv = document.getElementById(workoutObj.id);
-
-        const startButton = document.createElement('button');
-        startButton.innerText = 'Begin Workout'
-        workoutDiv.appendChild(startButton);
+        let button = document.createElement('button');
+        button.innerText = 'Begin Workout'
+        workoutDiv.appendChild(button);
       
-        startButton.addEventListener('click', (event) => {
+        button.addEventListener('click', (event) => {
           event.preventDefault();
-          startButton.remove();
-          let jsonObject = api.getWorkout(workoutObj.id);
-          App.renderTable(jsonObject);
+          button.remove();
+          api.getWorkout(workoutObj.id);
         })
-
       }
 
 
