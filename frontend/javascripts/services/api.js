@@ -47,6 +47,30 @@ class Api {
       })
     }
 
+    updateWorkout(id) {
+      let form = document.getElementById('edit-workout-form');
+      
+      fetch(`${BASE_URL}workouts/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          "title": form.querySelector('input[name="title"]').value,
+          "date": form.querySelector('input[name="date"]').value,
+          "focus": form.querySelector('input[name="focus"]').value
+        })
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .catch(function(error){
+        alert("An error occurred. Please try again.")
+        console.log(error.message);
+      })
+    }
+
     updateLiftSets(button) {
       let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);
       let newReps = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10);

@@ -230,7 +230,7 @@ class App {
 
       let dateInput = document.createElement('input');
       dateInput.setAttribute("type", "text");
-      dateInput.setAttribute("name", "title");
+      dateInput.setAttribute("name", "date");
       dateInput.setAttribute("value", "Workout Date");
       form.appendChild(dateInput);
 
@@ -248,6 +248,11 @@ class App {
       let submit = document.createElement('input');
       submit.setAttribute("type", "submit");
       form.appendChild(submit);
+
+      form.addEventListener('submit', function(event){
+        event.preventDefault();
+        api.updateWorkout(workout_id);
+      })
     }
         
 }
