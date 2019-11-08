@@ -116,18 +116,22 @@ class App {
         })
     }
 
-    renderStartWorkoutButton(workoutObj) {
+    renderWorkoutButtons(workoutObj) {
         let workoutDiv = document.getElementById(workoutObj.id);
-        let button = document.createElement('button');
-        button.innerText = 'Begin Workout'
-        workoutDiv.appendChild(button);
+
+        const startButton = document.createElement('button');
+        startButton.innerText = 'Begin Workout'
+        workoutDiv.appendChild(startButton);
       
-        button.addEventListener('click', (event) => {
+        startButton.addEventListener('click', (event) => {
           event.preventDefault();
-          button.remove();
-          api.getWorkout(workoutObj.id);
+          startButton.remove();
+          let jsonObject = api.getWorkout(workoutObj.id);
+          App.renderTable(jsonObject);
         })
+
       }
+
 
       static renderTable(object){
         const workoutDiv = document.getElementById(object.id);

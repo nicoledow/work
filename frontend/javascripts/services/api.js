@@ -10,10 +10,27 @@ class Api {
   }
 
   getWorkout(workout_id) {
+    console.log('in the api getworkout method')
     fetch(`${BASE_URL}/workouts/${workout_id}`)
     .then(response => response.json())
     //.then(json => console.log(json))
-    .then(json => App.renderTable(json))
+    //.then(json => App.renderTable(json))
+    .then(json => function(json){
+      //console.log(json);
+      App.renderTable(json);
+    })
+  }
+
+  fetchWorkoutForEdit(workout_id) {
+    fetch(`${BASE_URL}/workouts/${workout_id}`)
+    .then(response => response.json())
+    .then(function(json){
+      return json;
+    })
+    .catch(function(error){
+      alert("An error occurred. Please try again.");
+      console.log(error.message);
+    })
   }
 
   getWorkouts(){
