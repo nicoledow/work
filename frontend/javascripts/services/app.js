@@ -70,7 +70,7 @@ class App {
         button.setAttribute("value", "Save");
         button.addEventListener('click', function(event){
           event.preventDefault();
-          app.updateLiftSets(button);
+          api.updateLiftSets(button);
         });
       }
 

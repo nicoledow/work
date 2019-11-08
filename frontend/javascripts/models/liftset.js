@@ -40,9 +40,10 @@ class LiftSet {
     row.appendChild(saveButton);
     saveButton.innerHTML = '<input type="submit" value="Save">';
 
-    //need to add event listener to saveButton
-      //should trigger fetch post to lift sets
-    
+    saveButton.addEventListener('click', function(event){
+      event.preventDefault();
+      api.updateLiftSets(saveButton);
+    });
   }
 
 }
