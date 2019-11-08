@@ -13,10 +13,7 @@ class Api {
     console.log('in the api getworkout method')
     fetch(`${BASE_URL}/workouts/${workout_id}`)
     .then(response => response.json())
-    //.then(json => console.log(json))
-    //.then(json => App.renderTable(json))
     .then(json => function(json){
-      //console.log(json);
       App.renderTable(json);
     })
   }
