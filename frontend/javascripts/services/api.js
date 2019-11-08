@@ -74,7 +74,6 @@ class Api {
      }
 
      submitNewLiftSet(form) {
-       alert('hit api.submitNewLiftSet function');
        let workout_id = parseInt(form.querySelector('input[name="workout_id"]').value, 10);
        let exercise = form.querySelector('input[name="exercise"]').value;
        let goal = form.querySelector('input[name="goal"]').value;
@@ -94,8 +93,9 @@ class Api {
        })
        .then(function(object){
          console.log(object);
-         //const set = new LiftSet(object[0].reps, object[0].weight, object[0].goal)
-         app.addSetHTMLToDiv(object, form.parentElement)
+         const set = new LiftSet(object[0].reps, object[0].weight, object[0].goal)
+         //app.addSetHTMLToDiv(object, form.parentElement)
+         set.renderRow(object[0]);
        })
        .catch(function(error){
          alert("An error occurred. Please try again.");

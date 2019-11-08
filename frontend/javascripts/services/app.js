@@ -111,6 +111,8 @@ class App {
           //called with  workoutDiv(to be reference for workout_id)
     generateLiftForm(workoutDiv) {
         const setForm = document.createElement('form');
+        //dont think I need to reference workoutTable until data is actually submitted:
+        //const workoutTable = document.getElementById(`${workoutDiv.id}-table`);
         workoutDiv.appendChild(setForm);
         
         const exerciseInput = document.createElement('input');
@@ -178,7 +180,6 @@ class App {
         table.appendChild(addSetButton);
         addSetButton.innerText = 'Add a Set';
         addSetButton.addEventListener('click', () => {
-          //let newSet = new LiftSet(0, 0, '');
           event.preventDefault();
           addSetButton.parentElement.removeChild(addSetButton.parentElement.querySelector('button'));
           let newSet = new LiftSet(0, 0, '');
