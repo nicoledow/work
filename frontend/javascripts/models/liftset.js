@@ -11,7 +11,6 @@ class LiftSet {
 
     let newRow = document.createElement('tr');
     workoutDiv.appendChild(newRow);
-    //form.appendChild(newRow);
     
     let newExerciseCell = document.createElement('td');
     newExerciseCell.innerText = `${object[0].exercise.name}`;
