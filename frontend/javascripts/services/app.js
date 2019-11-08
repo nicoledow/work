@@ -133,18 +133,6 @@ class App {
         goalInput.setAttribute("value", "Goal");
         setForm.appendChild(goalInput);
         
-        const repsInput = document.createElement('input');
-        repsInput.setAttribute("type", "text");
-        repsInput.setAttribute("name", "reps");
-        goalInput.setAttribute("value", "Reps");
-        setForm.appendChild(repsInput);
-        
-        const weightInput = document.createElement('input');
-        weightInput.setAttribute("type", "text");
-        weightInput.setAttribute("name", "weight");
-        weightInput.setAttribute("value", "Weight");
-        setForm.appendChild(weightInput);
-        
         const setSubmitButton = document.createElement('input');
         setSubmitButton.setAttribute("type", "submit")
         setSubmitButton.setAttribute("value", "Add");

@@ -41,6 +41,8 @@ class LiftSet {
     saveButton.innerHTML = '<input type="submit" value="Save">';
 
     //need to add event listener to saveButton
+      //should trigger fetch post to lift sets
+    
   }
 
 }

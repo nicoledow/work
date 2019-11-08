@@ -77,8 +77,6 @@ class Api {
        let workout_id = parseInt(form.querySelector('input[name="workout_id"]').value, 10);
        let exercise = form.querySelector('input[name="exercise"]').value;
        let goal = form.querySelector('input[name="goal"]').value;
-       let reps = parseInt(form.querySelector('input[name="reps"]').value, 10);
-       let weight = parseInt(form.querySelector('input[name="weight"]').value, 10);
 
        fetch(`${BASE_URL}liftsets`, {
          method: "POST",
@@ -86,7 +84,12 @@ class Api {
            "Content-Type": "application/json",
            "Accept": "application/json"
          },
-         body: JSON.stringify({"workout_id": workout_id, "exercise": exercise, "goal": goal, "reps": reps, "weight": weight})
+         body: JSON.stringify({"workout_id": workout_id, 
+                               "exercise": exercise, 
+                               "goal": goal, 
+                               "reps": 0, 
+                               "weight": 0
+                              })
        })
        .then(function(response){
          return response.json();
@@ -94,7 +97,6 @@ class Api {
        .then(function(object){
          console.log(object);
          const set = new LiftSet(object[0].reps, object[0].weight, object[0].goal)
-         //app.addSetHTMLToDiv(object, form.parentElement)
          set.renderRow(object[0]);
        })
        .catch(function(error){
