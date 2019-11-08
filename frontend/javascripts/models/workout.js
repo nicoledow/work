@@ -24,6 +24,7 @@ class Workout {
     div.appendChild(focus);
 
     app.renderStartWorkoutButton(object);
-}
+  }
+
 
 }
