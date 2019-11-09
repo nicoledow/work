@@ -16,7 +16,10 @@ newWorkoutButton.addEventListener('click', () => {
   app.renderNewWorkoutForm();
 })
 
-const prButton = document.getElementById('PR-btn');
-prButton.addEventListener('click', () => {
+document.getElementById('PR-btn').addEventListener('click', () => {
   App.renderPRSearch();
+})
+
+document.getElementById('home-btn').addEventListener('click', () => {
+  location.reload();
 })
