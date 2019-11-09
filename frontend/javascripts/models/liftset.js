@@ -46,4 +46,45 @@ class LiftSet {
     });
   }
 
+  static renderRecords(liftsets_object){
+    let exerciseHeader = document.createElement('h1');
+    exerciseHeader.innerText = liftsets_object[0].exercise.name
+    body.appendChild(exerciseHeader);
+    console.log('in liftset.renderrecords')
+    console.log(liftsets_object)
+    console.log(liftsets_object[0].exercise.name);
+    body.removeChild(document.getElementById('exercise-list'));
+    const table = document.createElement('table');
+    table.id = 'liftset-table'
+    body.appendChild(table);
+
+    let firstRow = document.createElement('tr');
+    table.appendChild(firstRow);
+
+    let repsHeader = document.createElement('th');
+    repsHeader.innerText = 'Reps:'
+    firstRow.appendChild(repsHeader) 
+
+    let weightHeader = document.createElement('th');
+    weightHeader.innerText = 'Weight:';
+    firstRow.appendChild(weightHeader);
+
+    let dateHeader = document.createElement('th');
+    dateHeader.innerText = 'Date'
+    firstRow.appendChild(dateHeader);
+
+    for(let i = 0; i < liftsets_object.length; i++){
+      const row = document.createElement('tr');
+      table.appendChild(row);
+
+      const repsCell = document.createElement('td');
+      repsCell.innerText = liftsets_object[i].reps;
+      row.appendChild(repsCell);
+
+      const weightCell = document.createElement('td');
+      weightCell.innerText = liftsets_object[i].weight;
+      row.appendChild(weightCell);
+    }
+  }
+
 }

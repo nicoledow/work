@@ -146,6 +146,14 @@ class Api {
       }
     
    
-    
+    fetchLiftSets(exercise_id) {
+      fetch(`${BASE_URL}exercises/${exercise_id}`)
+      .then(response => response.json())
+      .then(function(object){
+        console.log('in api.fetchliftsets');
+        console.log(object);
+        LiftSet.renderRecords(object);
+      })
+    }
      
 }

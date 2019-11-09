@@ -256,9 +256,15 @@ class App {
     }
 
   static renderPRSearch() {
-    //create a search form to find liftsets by exercise name
-      //want to be able to narrow down by #of reps
+    if (document.getElementById('workout-container')){
     container.removeChild(workoutContainer);
+    }
+
+    if (document.getElementById('liftset-table')){
+      body.removeChild(document.getElementById('liftset-table'));
+      body.querySelector('h1').remove();
+    }
+ 
     let form = document.createElement('form');
     form.id = 'pr-search-form';
     body.appendChild(form);
@@ -268,7 +274,7 @@ class App {
     ul.id = 'exercise-list'
     body.appendChild(ul);
     Api.fetchExerciseNames(ul);
-  }
+ }
 
   completeSearchList(exercisesObj) {
     console.log('in app.completeSearchList')
@@ -285,12 +291,12 @@ class App {
       list.appendChild(li);
 
       const button = document.createElement('button')
+      button.innerText = 'Records';
       li.appendChild(button);
 
-      const a = document.createElement('a');
-      a.setAttribute("href", `/workouts/${exercisesObj[i].id}`);
-      a.innerText = ' Records';
-      button.appendChild(a);
+      button.addEventListener('click', function(){
+        api.fetchLiftSets(exercisesObj[i].id)
+      })
     }
   }
         
