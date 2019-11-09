@@ -71,6 +71,7 @@ class App {
         button.addEventListener('click', function(event){
           event.preventDefault();
           api.updateLiftSets(button);
+          alert('Data saved!');
         });
       }
 
