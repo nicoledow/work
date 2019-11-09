@@ -12,4 +12,5 @@ Rails.application.routes.draw do
  patch '/liftsets/:id', to: 'liftsets#update'
 
  get '/exercises', to: 'exercises#index'
+ get '/exercises/:id', to: 'exercises#show'
 end
