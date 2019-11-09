@@ -9,3 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   api.getWorkouts();
   app.renderNewWorkoutButton();
 });
+
+const newWorkoutButton = document.getElementById('new-workout-btn')
+newWorkoutButton.addEventListener('click', () => {
+  app.renderNewWorkoutForm();
+})

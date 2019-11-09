@@ -1,12 +1,4 @@
 class App {
-    renderNewWorkoutButton() {
-        let button = document.createElement('button');
-        headerDiv.appendChild(button);
-        button.id = 'new-workout-btn'
-        button.innerText = 'Plan a New Workout';
-        
-       button.addEventListener('click', app.renderNewWorkoutForm);
-      }
 
       renderNewWorkoutForm() {
         let newDiv = document.createElement('div');
