@@ -217,6 +217,18 @@ class App {
         })
     }
 
+    static renderFinishWorkoutButton(workout_id) {
+      let button = document.createElement('button');
+      button.innerText = "Finished!";
+      document.getElementById(workout_id).appendChild(button);
+
+      button.addEventListener('click', function(event){
+        event.preventDefault();
+        //button.parentElement.removeChild(button.parentElement.querySelectorAll('button'));
+        api.completeWorkout(workout_id);
+      })
+    }
+
     static renderEditForm(workout_id){
       let form = document.createElement('form');
       form.id = 'edit-workout-form';

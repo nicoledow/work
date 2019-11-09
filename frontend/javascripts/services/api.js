@@ -13,7 +13,11 @@ class Api {
     fetch(`${BASE_URL}/workouts/${workout_id}`)
     .then(response => response.json())
     //.then(json => console.log(json))
-    .then(json => App.renderTable(json))
+    //.then(json => App.renderTable(json))
+    .then(function(json){
+      App.renderTable(json);
+      App.renderFinishWorkoutButton(workout_id)
+    })
   }
 
   getWorkouts(){
@@ -71,6 +75,23 @@ class Api {
       .catch(function(error){
         alert("An error occurred. Please try again.")
         console.log(error.message);
+      })
+    }
+
+    completeWorkout(workout_id){
+      fetch(`${BASE_URL}workouts/${workout_id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({"id": workout_id, "completed": true})
+      })
+      .then(response => response.json())
+      .then(function(object){
+        //need to remove the workoutDiv from page
+        let workoutDiv = document.getElementById(workout_id);
+        workoutDiv.parentElement.removeChild(workoutDiv);
       })
     }
 
