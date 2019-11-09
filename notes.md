@@ -1,4 +1,4 @@
--need to be able to delete a workout
+-be able to see past workouts
 
 -need to auto-update DOM when liftset is edited/'save' is clicked
 

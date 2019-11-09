@@ -95,6 +95,22 @@ class Api {
       })
     }
 
+    deleteWorkout(id) {
+      fetch(`${BASE_URL}workouts/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({"id": id})
+      })
+      .then(response => response.json())
+      .then(function(object){
+        let workoutDiv = document.getElementById(id);
+        workoutDiv.parentElement.removeChild(workoutDiv);
+      })
+    }
+
     updateLiftSets(button) {
       let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);
       let newReps = parseInt(button.parentElement.parentElement.querySelector('input[name="actual-reps"]').value, 10);
