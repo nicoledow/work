@@ -62,8 +62,11 @@ class Api {
           "focus": form.querySelector('input[name="focus"]').value
         })
       })
-      .then(function(response){
-        return response.json();
+      .then(response => response.json())
+      .then(function(object){
+         let w = new Workout(object)
+         workoutContainer.removeChild(document.getElementById(object.id))
+         workoutContainer.innerHtml += w.render(object);
       })
       .catch(function(error){
         alert("An error occurred. Please try again.")
