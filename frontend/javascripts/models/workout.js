@@ -23,8 +23,9 @@ class Workout {
     focus.innerText = `Focus: ${object.focus}`;
     div.appendChild(focus);
    
-    app.renderEditWorkoutButton(object);
-    app.renderStartWorkoutButton(object);
+    App.renderEditWorkoutButton(object);
+    App.renderStartWorkoutButton(object);
+    //App.renderDeleteWorkoutButton(object);
   }
 
 

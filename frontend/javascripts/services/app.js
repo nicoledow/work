@@ -144,7 +144,7 @@ class App {
         })
     }
 
-    renderStartWorkoutButton(workoutObj) {
+    static renderStartWorkoutButton(workoutObj) {
         let workoutDiv = document.getElementById(workoutObj.id);
         let button = document.createElement('button');
         button.innerText = 'Begin Workout'
@@ -159,7 +159,7 @@ class App {
         })
       }
 
-      renderEditWorkoutButton(workoutObject) {
+      static renderEditWorkoutButton(workoutObject) {
         let button = document.createElement('button');
         button.innerText = 'Edit Workout'
         button.addEventListener('click', function(){
