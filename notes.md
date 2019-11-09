@@ -1,4 +1,4 @@
--be able to see past workouts
+-view PRs functionality
 
 -blog
 
