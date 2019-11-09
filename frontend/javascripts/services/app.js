@@ -280,8 +280,17 @@ class App {
     
     for (let i = 0; i < exercisesObj.length; i++){
       let li = document.createElement('li')
+      li.id = exercisesObj[i].id;
       li.innerHTML = exercisesObj[i].name;
       list.appendChild(li);
+
+      const button = document.createElement('button')
+      li.appendChild(button);
+
+      const a = document.createElement('a');
+      a.setAttribute("href", `/workouts/${exercisesObj[i].id}`);
+      a.innerText = ' Records';
+      button.appendChild(a);
     }
   }
         
