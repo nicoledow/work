@@ -159,6 +159,15 @@ class App {
         })
       }
 
+      renderEditWorkoutButton(workoutObject) {
+        let button = document.createElement('button');
+        button.innerText = 'Edit Workout'
+        button.addEventListener('click', function(){
+          App.renderEditForm(workoutObject.id);
+        })
+        document.getElementById(workoutObject.id).appendChild(button);
+      }
+
       static renderTable(object){
         const workoutDiv = document.getElementById(object.id);
        
