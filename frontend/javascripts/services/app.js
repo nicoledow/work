@@ -71,6 +71,7 @@ class App {
         button.addEventListener('click', function(event){
           event.preventDefault();
           api.updateLiftSets(button);
+          alert('Data saved!');
         });
       }
         
@@ -118,7 +119,7 @@ class App {
         })
     }
 
-    renderStartWorkoutButton(workoutObj) {
+    static renderStartWorkoutButton(workoutObj) {
         let workoutDiv = document.getElementById(workoutObj.id);
         let button = document.createElement('button');
         button.innerText = 'Begin Workout'
@@ -126,11 +127,34 @@ class App {
       
         button.addEventListener('click', (event) => {
           event.preventDefault();
-          button.remove();
+          workoutDiv.querySelectorAll('button').forEach(b => {
+            b.remove();
+          })
           api.getWorkout(workoutObj.id);
         })
       }
 
+<<<<<<< HEAD
+=======
+      static renderEditWorkoutButton(workoutObject) {
+        let button = document.createElement('button');
+        button.innerText = 'Edit Workout'
+        button.addEventListener('click', function(){
+          App.renderEditForm(workoutObject.id);
+        })
+        document.getElementById(workoutObject.id).appendChild(button);
+      }
+
+      static renderDeleteWorkoutButton(workoutObject) {
+        let button = document.createElement('button');
+        let workoutDiv = document.getElementById(workoutObject.id);
+        workoutDiv.appendChild(button);
+        button.innerText = 'Delete Workout';
+        button.addEventListener('click', function(){
+          api.deleteWorkout(workoutObject.id);
+        })
+      }
+>>>>>>> change-add-liftset-form
 
       static renderTable(object){
         const workoutDiv = document.getElementById(object.id);
@@ -190,6 +214,18 @@ class App {
       
           app.generateLiftInputCells(object, newTableRow);
         })
+    }
+
+    static renderFinishWorkoutButton(workout_id) {
+      let button = document.createElement('button');
+      button.innerText = "Finished!";
+      document.getElementById(workout_id).appendChild(button);
+
+      button.addEventListener('click', function(event){
+        event.preventDefault();
+        //button.parentElement.removeChild(button.parentElement.querySelectorAll('button'));
+        api.completeWorkout(workout_id);
+      })
     }
 
     static renderEditForm(workout_id){

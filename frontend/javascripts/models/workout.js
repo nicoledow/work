@@ -22,15 +22,10 @@ class Workout {
     let focus = document.createElement('h3');
     focus.innerText = `Focus: ${object.focus}`;
     div.appendChild(focus);
-
-    let button = document.createElement('button');
-    button.innerText = 'Edit Workout'
-    button.addEventListener('click', function(){
-      App.renderEditForm(object.id);
-    })
-    div.appendChild(button);
-
-    app.renderStartWorkoutButton(object);
+   
+    App.renderEditWorkoutButton(object);
+    App.renderStartWorkoutButton(object);
+    App.renderDeleteWorkoutButton(object);
   }
 
 

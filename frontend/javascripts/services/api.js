@@ -12,6 +12,7 @@ class Api {
   getWorkout(workout_id) {
     fetch(`${BASE_URL}/workouts/${workout_id}`)
     .then(response => response.json())
+<<<<<<< HEAD
     .then(json => console.log(json))
     //.then(json => App.renderTable(json))
     .then(object => function(object){
@@ -28,6 +29,13 @@ class Api {
     .catch(function(error){
       alert("An error occurred. Please try again.");
       console.log(error.message);
+=======
+    //.then(json => console.log(json))
+    //.then(json => App.renderTable(json))
+    .then(function(json){
+      App.renderTable(json);
+      App.renderFinishWorkoutButton(workout_id)
+>>>>>>> change-add-liftset-form
     })
   }
 
@@ -40,7 +48,7 @@ class Api {
         newWorkout.render(workoutObj);
       })
     })
-}
+  }
 
     submitNewWorkout(form) {
       fetch(`${BASE_URL}workouts/new`, {
@@ -77,8 +85,16 @@ class Api {
           "focus": form.querySelector('input[name="focus"]').value
         })
       })
+<<<<<<< HEAD
       .then(function(response){
         app.updateWorkoutDiv(id);
+=======
+      .then(response => response.json())
+      .then(function(object){
+         let w = new Workout(object)
+         workoutContainer.removeChild(document.getElementById(object.id))
+         workoutContainer.innerHtml += w.render(object);
+>>>>>>> change-add-liftset-form
       })
       .catch(function(error){
         alert("An error occurred. Please try again.")
@@ -86,6 +102,7 @@ class Api {
       })
     }
 
+<<<<<<< HEAD
     submitNewLiftSet(form) {
       let workout_id = parseInt(form.querySelector('input[name="workout_id"]').value, 10);
       let exercise = form.querySelector('input[name="exercise"]').value;
@@ -93,10 +110,16 @@ class Api {
 
       fetch(`${BASE_URL}liftsets`, {
         method: "POST",
+=======
+    completeWorkout(workout_id){
+      fetch(`${BASE_URL}workouts/${workout_id}`, {
+        method: "PATCH",
+>>>>>>> change-add-liftset-form
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
+<<<<<<< HEAD
         body: JSON.stringify({"workout_id": workout_id, 
 
                               "exercise": exercise, 
@@ -119,6 +142,33 @@ class Api {
       })
     }
 
+=======
+        body: JSON.stringify({"id": workout_id, "completed": true})
+      })
+      .then(response => response.json())
+      .then(function(object){
+        //need to remove the workoutDiv from page
+        let workoutDiv = document.getElementById(workout_id);
+        workoutDiv.parentElement.removeChild(workoutDiv);
+      })
+    }
+
+    deleteWorkout(id) {
+      fetch(`${BASE_URL}workouts/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({"id": id})
+      })
+      .then(response => response.json())
+      .then(function(object){
+        let workoutDiv = document.getElementById(id);
+        workoutDiv.parentElement.removeChild(workoutDiv);
+      })
+    }
+>>>>>>> change-add-liftset-form
 
     updateLiftSets(button) {
       let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);

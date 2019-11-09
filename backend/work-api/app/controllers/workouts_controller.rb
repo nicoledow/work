@@ -29,7 +29,15 @@ class WorkoutsController < ApplicationController
 
     def update
       workout = Workout.find_by_id(params[:id])
-      workout.update(workout_params)
+
+      if workout_params[:completed]
+        workout.completed = workout_params[:completed]
+      else
+        workout.title = workout_params[:title] unless workout_params[:title] == "Workout Title"
+        workout.date = workout_params[:date] unless workout_params[:date] == "Workout Date"
+        workout.focus = workout_params[:focus] unless workout_params[:focus] == "Workout Focus"
+      end
+
       workout.save
       render json: workout, :include => {:exercises => 
         {:only => [:name, :id]},
@@ -40,8 +48,14 @@ class WorkoutsController < ApplicationController
     }
     end
 
+    def destroy
+      workouts = Workout.all.incomplete
+      Workout.find_by_id(params[:id]).destroy
+      render json: workouts
+    end
+
   private
   def workout_params
-    params.permit(:title, :date, :focus)
+    params.permit(:title, :date, :focus, :id, :completed)
   end
 end
