@@ -134,8 +134,6 @@ class App {
         })
       }
 
-<<<<<<< HEAD
-=======
       static renderEditWorkoutButton(workoutObject) {
         let button = document.createElement('button');
         button.innerText = 'Edit Workout'
@@ -154,7 +152,6 @@ class App {
           api.deleteWorkout(workoutObject.id);
         })
       }
->>>>>>> change-add-liftset-form
 
       static renderTable(object){
         const workoutDiv = document.getElementById(object.id);
