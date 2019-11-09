@@ -1,7 +1,5 @@
 -be able to see past workouts
 
--need to auto-update DOM when liftset is edited/'save' is clicked
-
 -blog
 
 -video
