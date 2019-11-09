@@ -3,12 +3,15 @@ $color-2: #d6d4e0;
 $color-3: #b8a9c9;
 $color-4: #622569;
 
+@import "bootstrap";
+
 body {
     /*background: url(../assets/concrete-background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover; */
+    background: $color-3;
   }
 
 h1, h2, h3, h4 {
