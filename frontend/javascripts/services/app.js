@@ -262,7 +262,7 @@ class App {
 
     if (document.getElementById('liftset-table')){
       body.removeChild(document.getElementById('liftset-table'));
-      body.querySelector('h1').remove();
+      body.removeChild(document.getElementById('exercise-title'));
     }
  
     let form = document.createElement('form');
@@ -291,6 +291,7 @@ class App {
       list.appendChild(li);
 
       const button = document.createElement('button')
+      button.className = 'btn-small btn-info';
       button.innerText = 'Records';
       li.appendChild(button);
 

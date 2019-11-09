@@ -48,6 +48,7 @@ class LiftSet {
 
   static renderRecords(liftsets_object){
     let exerciseHeader = document.createElement('h1');
+    exerciseHeader.id = 'exercise-title';
     exerciseHeader.innerText = liftsets_object[0].exercise.name
     body.appendChild(exerciseHeader);
     console.log('in liftset.renderrecords')
