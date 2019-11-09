@@ -10,4 +10,6 @@ Rails.application.routes.draw do
  post '/liftsets', to: 'liftsets#create'
  get '/liftsets/:id', to: 'liftsets#show'
  patch '/liftsets/:id', to: 'liftsets#update'
+
+ get '/exercises', to: 'exercises#index'
 end

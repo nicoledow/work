@@ -136,5 +136,16 @@ class Api {
       })
      }
 
+    static fetchExerciseNames(list) {
+      fetch(`${BASE_URL}exercises`)
+      .then(response => response.json())
+      .then(function(object){
+        console.log(object)
+        app.completeSearchList(object)
+        })
+      }
+    
+   
+    
      
 }

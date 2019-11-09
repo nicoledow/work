@@ -255,5 +255,34 @@ class App {
       })
     }
 
+  static renderPRSearch() {
+    //create a search form to find liftsets by exercise name
+      //want to be able to narrow down by #of reps
+    container.removeChild(workoutContainer);
+    let form = document.createElement('form');
+    form.id = 'pr-search-form';
+    body.appendChild(form);
+
+    form.innerHTML += '<input type="text" id="exercise" onkeyup="api.narrowExercises()" placeholder="Search for an exercise">'
+    let ul = document.createElement('ul')
+    ul.id = 'exercise-list'
+    body.appendChild(ul);
+    Api.fetchExerciseNames(ul);
+  }
+
+  completeSearchList(exercisesObj) {
+    console.log('in app.completeSearchList')
+    console.log(exercisesObj)
+    console.log(exercisesObj[0])
+    console.log(exercisesObj[0].name);
+    console.log(exercisesObj.length)
+    let list = document.getElementById('exercise-list');
+    
+    for (let i = 0; i < exercisesObj.length; i++){
+      let li = document.createElement('li')
+      li.innerHTML = exercisesObj[i].name;
+      list.appendChild(li);
+    }
+  }
         
 }
