@@ -7,3 +7,7 @@
 -video
 
 -CSS/Styling
+
+-license
+
+-readme
