@@ -48,6 +48,12 @@ class WorkoutsController < ApplicationController
     }
     end
 
+    def destroy
+      workouts = Workout.all.incomplete
+      Workout.find_by_id(params[:id]).destroy
+      render json: workouts
+    end
+
   private
   def workout_params
     params.permit(:title, :date, :focus, :id, :completed)
