@@ -12,7 +12,7 @@ class Api {
   getWorkout(workout_id) {
     fetch(`${BASE_URL}/workouts/${workout_id}`)
     .then(response => response.json())
-    //.then(json => console.log(json))
+    .then(json => console.log(json))
     //.then(json => App.renderTable(json))
     .then(object => function(object){
       App.renderTable(object);
@@ -78,13 +78,47 @@ class Api {
         })
       })
       .then(function(response){
-        return response.json();
+        app.updateWorkoutDiv(id);
       })
       .catch(function(error){
         alert("An error occurred. Please try again.")
         console.log(error.message);
       })
     }
+
+    submitNewLiftSet(form) {
+      let workout_id = parseInt(form.querySelector('input[name="workout_id"]').value, 10);
+      let exercise = form.querySelector('input[name="exercise"]').value;
+      let goal = form.querySelector('input[name="goal"]').value;
+
+      fetch(`${BASE_URL}liftsets`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({"workout_id": workout_id, 
+
+                              "exercise": exercise, 
+                              "goal": goal, 
+                              "reps": 0, 
+                              "weight": 0
+                             })
+      })
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(object){
+        console.log(object);
+        const set = new LiftSet(object[0].reps, object[0].weight, object[0].goal)
+        set.renderRow(object[0]);
+      })
+      .catch(function(error){
+        alert("An error occurred. Please try again.");
+        console.log(error.message);
+      })
+    }
+
 
     updateLiftSets(button) {
       let lift_set_id = parseInt(button.parentElement.parentElement.id.split('-')[2], 10);
@@ -111,37 +145,5 @@ class Api {
       })
      }
 
-     submitNewLiftSet(form) {
-       let workout_id = parseInt(form.querySelector('input[name="workout_id"]').value, 10);
-       let exercise = form.querySelector('input[name="exercise"]').value;
-       let goal = form.querySelector('input[name="goal"]').value;
-
-       fetch(`${BASE_URL}liftsets`, {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-           "Accept": "application/json"
-         },
-         body: JSON.stringify({"workout_id": workout_id, 
-
-                               "exercise": exercise, 
-                               "goal": goal, 
-                               "reps": 0, 
-                               "weight": 0
-                              })
-       })
-       .then(function(response){
-         return response.json();
-       })
-       .then(function(object){
-         console.log(object);
-         const set = new LiftSet(object[0].reps, object[0].weight, object[0].goal)
-         set.renderRow(object[0]);
-       })
-       .catch(function(error){
-         alert("An error occurred. Please try again.");
-         console.log(error.message);
-       })
-     }
-
+     
 }

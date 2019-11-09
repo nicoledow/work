@@ -229,5 +229,6 @@ class App {
         api.updateWorkout(workout_id);
       })
     }
+
         
 }
