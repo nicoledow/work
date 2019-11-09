@@ -3,7 +3,8 @@
 Work is a simple workout-tracking app that lets you easily plan your lifts and view your lifting history. It has a Ruby on Rails back-end and a Javascript front-end.
 
 ## Usage
-To run Work, fork and clone this repository onto your machine. While in the work-api folder, run the following commands to prepare the database:
+To run Work, fork and clone this repository onto your machine. While in the work-api folder, run the following commands to prepare the database and load the required Ruby gems:
+$bundle i
 $rails db:create
 $rails db:migrate
 
