@@ -168,6 +168,14 @@ class App {
         document.getElementById(workoutObject.id).appendChild(button);
       }
 
+      static renderDeleteWorkoutButton(workoutObject) {
+        let button = document.createElement('button');
+        button.innerText = 'Delete Workout';
+        button.addEventListener('click', function(){
+          alert('write a method to delete the workout');
+        })
+      }
+
       static renderTable(object){
         const workoutDiv = document.getElementById(object.id);
        

@@ -25,7 +25,7 @@ class Workout {
    
     App.renderEditWorkoutButton(object);
     App.renderStartWorkoutButton(object);
-    //App.renderDeleteWorkoutButton(object);
+    App.renderDeleteWorkoutButton(object);
   }
 
 

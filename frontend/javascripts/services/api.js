@@ -29,7 +29,7 @@ class Api {
         newWorkout.render(workoutObj);
       })
     })
-}
+  }
 
     submitNewWorkout(form) {
       fetch(`${BASE_URL}workouts/new`, {
