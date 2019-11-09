@@ -4,8 +4,6 @@
 
 -when you click 'begin workout', the 'edit workout' button should disappear
 
--need to be able to mark a workout as complete
-
 -blog
 
 -video

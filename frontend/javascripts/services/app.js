@@ -152,7 +152,9 @@ class App {
       
         button.addEventListener('click', (event) => {
           event.preventDefault();
-          button.remove();
+          workoutDiv.querySelectorAll('button').forEach(b => {
+            b.remove();
+          })
           api.getWorkout(workoutObj.id);
         })
       }
