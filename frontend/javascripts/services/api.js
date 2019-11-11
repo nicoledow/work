@@ -12,8 +12,6 @@ class Api {
   getWorkout(workout_id) {
     fetch(`${BASE_URL}/workouts/${workout_id}`)
     .then(response => response.json())
-    //.then(json => console.log(json))
-    //.then(json => App.renderTable(json))
     .then(function(json){
       App.renderTable(json);
       App.renderFinishWorkoutButton(workout_id)

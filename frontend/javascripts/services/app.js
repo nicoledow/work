@@ -67,11 +67,8 @@ class App {
         });
       }
         
-          //called with  workoutDiv(to be reference for workout_id)
     generateLiftForm(workoutDiv) {
         const setForm = document.createElement('form');
-        //dont think I need to reference workoutTable until data is actually submitted:
-        //const workoutTable = document.getElementById(`${workoutDiv.id}-table`);
         workoutDiv.appendChild(setForm);
         
         const exerciseInput = document.createElement('input');
@@ -89,16 +86,6 @@ class App {
         goalInput.setAttribute("type", "text");
         goalInput.setAttribute("name", "goal");
         setForm.appendChild(goalInput);
-        
-        // const repsInput = document.createElement('input');
-        // repsInput.setAttribute("type", "text");
-        // repsInput.setAttribute("name", "reps");
-        // setForm.appendChild(repsInput);
-        
-        // const weightInput = document.createElement('input');
-        // weightInput.setAttribute("type", "text");
-        // weightInput.setAttribute("name", "weight");
-        // setForm.appendChild(weightInput);
         
         const setSubmitButton = document.createElement('input');
         setSubmitButton.setAttribute("type", "submit")
@@ -212,7 +199,6 @@ class App {
 
       button.addEventListener('click', function(event){
         event.preventDefault();
-        //button.parentElement.removeChild(button.parentElement.querySelectorAll('button'));
         api.completeWorkout(workout_id);
       })
     }
@@ -277,11 +263,6 @@ class App {
  }
 
   completeSearchList(exercisesObj) {
-    console.log('in app.completeSearchList')
-    console.log(exercisesObj)
-    console.log(exercisesObj[0])
-    console.log(exercisesObj[0].name);
-    console.log(exercisesObj.length)
     let list = document.getElementById('exercise-list');
     
     for (let i = 0; i < exercisesObj.length; i++){
