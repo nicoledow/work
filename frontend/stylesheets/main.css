@@ -1,38 +1,44 @@
-/*$color-1: #5b9aa0;
-$color-2: #d6d4e0;
-$color-3: #b8a9c9;
-$color-4: #622569;*/
-
-/*@import "bootstrap";*/
-
 body {
     background-color: #d6d4e0;
   }
 
-/*h1 {
-  text-align: center;
-  color: #622569;
-}*/
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, p {
   text-align: center;
   color: #622569;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+
+td, th {
+  text-align: center;
+  color: #622569;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .navbar {
   background-color: rgb(146, 168, 209);
 }
 
-.card { 
+.card-content { 
   background-color: rgb(146, 168, 209);
-}
-
-.btn-small {
-  margin: 2px;
-  padding: 2px;
-}
-
-.card {
   padding: 2em;
   margin: 2em;
+}
+
+button, [type~="submit"] {
+  background-color: #17a2b8;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 6px;
+  color: white;
+  text-align: center;
+}
+
+form {
+  text-align: center;
+}
+
+[input~="submit"] {
+  border-radius: 4px;
 }
