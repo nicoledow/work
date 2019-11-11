@@ -244,7 +244,7 @@ class App {
       })
     }
 
-  static renderPRSearch() {
+  static renderPRs() {
     if (document.getElementById('workout-container')){
     container.removeChild(workoutContainer);
     }
@@ -253,19 +253,14 @@ class App {
       body.removeChild(document.getElementById('liftset-table'));
       body.removeChild(document.getElementById('exercise-title'));
     }
- 
-    let form = document.createElement('form');
-    form.id = 'pr-search-form';
-    body.appendChild(form);
 
-    form.innerHTML += '<input type="text" id="exercise" onkeyup="api.narrowExercises()" placeholder="Search for an exercise">'
     let ul = document.createElement('ul')
     ul.id = 'exercise-list'
     body.appendChild(ul);
     Api.fetchExerciseNames(ul);
  }
 
-  completeSearchList(exercisesObj) {
+  completePRList(exercisesObj) {
     let list = document.getElementById('exercise-list');
     
     for (let i = 0; i < exercisesObj.length; i++){

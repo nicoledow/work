@@ -16,7 +16,7 @@ newWorkoutButton.addEventListener('click', () => {
 })
 
 document.getElementById('PR-btn').addEventListener('click', () => {
-  App.renderPRSearch();
+  App.renderPRs();
 })
 
 document.getElementById('home-btn').addEventListener('click', () => {

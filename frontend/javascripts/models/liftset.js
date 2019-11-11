@@ -52,9 +52,6 @@ class LiftSet {
     exerciseHeader.id = 'exercise-title';
     exerciseHeader.innerText = liftsets_object[0].exercise.name
     body.appendChild(exerciseHeader);
-    console.log('in liftset.renderrecords')
-    console.log(liftsets_object)
-    console.log(liftsets_object[0].exercise.name);
     body.removeChild(document.getElementById('exercise-list'));
     const table = document.createElement('table');
     table.id = 'liftset-table'
@@ -70,10 +67,6 @@ class LiftSet {
     let weightHeader = document.createElement('th');
     weightHeader.innerText = 'Weight:';
     firstRow.appendChild(weightHeader);
-
-    let dateHeader = document.createElement('th');
-    dateHeader.innerText = 'Date'
-    firstRow.appendChild(dateHeader);
 
     for(let i = 0; i < liftsets_object.length; i++){
       const row = document.createElement('tr');

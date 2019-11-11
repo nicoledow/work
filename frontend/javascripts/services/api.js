@@ -137,7 +137,7 @@ class Api {
       .then(response => response.json())
       .then(function(object){
         console.log(object)
-        app.completeSearchList(object)
+        app.completePRList(object)
         })
       }
     
