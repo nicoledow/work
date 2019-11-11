@@ -3,7 +3,6 @@ const headerDiv = document.getElementById('header-div')
 const body = document.querySelector('body');
 const workoutContainer = document.getElementById('workout-container');
 const container = body.querySelector('.container');
-const api = new Api;
 const app = new App;
 
 document.addEventListener('DOMContentLoaded', () => {

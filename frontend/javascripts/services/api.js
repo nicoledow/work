@@ -3,7 +3,6 @@ class Api {
     fetch(`${BASE_URL}workouts/${id}`)
     .then(response => response.json())
     .then(function(object){
-      //console.log(object);
       const workout = new Workout(object);
       workout.render(object);
     })
@@ -87,7 +86,6 @@ class Api {
       })
       .then(response => response.json())
       .then(function(object){
-        //need to remove the workoutDiv from page
         let workoutDiv = document.getElementById(workout_id);
         workoutDiv.parentElement.removeChild(workoutDiv);
       })
