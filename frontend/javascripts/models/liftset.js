@@ -25,7 +25,7 @@ class LiftSet {
     let repsInput = document.createElement('input');
     repsInput.setAttribute("type", "text");
     repsInput.setAttribute("name", "actual-reps");
-    repsInput.setAttribute("value", `${parseInt(object.reps, 10)}`);
+    repsInput.setAttribute("placeholder", `${parseInt(object.reps, 10)}`);
     repsCell.appendChild(repsInput);
 
     let weightCell = document.createElement('td');
@@ -33,7 +33,7 @@ class LiftSet {
     let weightInput = document.createElement('input');
     weightInput.setAttribute("type", "text");
     weightInput.setAttribute("name", "actual-weight");
-    weightInput.setAttribute("value", `${parseInt(object.weight, 10)}`)
+    weightInput.setAttribute("placeholder", `${parseInt(object.weight, 10)}`)
     weightCell.appendChild(weightInput);
 
     let saveButton = document.createElement('td');

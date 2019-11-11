@@ -11,24 +11,24 @@ class App {
         let titleInput = document.createElement('input');
         titleInput.setAttribute("type", "text");
         titleInput.setAttribute("name", "title");
-        titleInput.setAttribute("value", "Workout Title");
+        titleInput.setAttribute("placeholder", "Workout Title");
         newForm.appendChild(titleInput);
       
         let dateInput = document.createElement('input');
         dateInput.setAttribute("type", "text");
         dateInput.setAttribute("name", "date");
-        dateInput.setAttribute("value", "Workout Date");
+        dateInput.setAttribute("placeholder", "Workout Date");
         newForm.appendChild(dateInput);
       
         let focusInput = document.createElement('input');
         focusInput.setAttribute("type", "text");
         focusInput.setAttribute("name", "focus");
-        focusInput.setAttribute("value", "Workout Focus");
+        focusInput.setAttribute("placeholder", "Workout Focus");
         newForm.appendChild(focusInput);
       
         let submitButton = document.createElement('input');
         submitButton.setAttribute("type", "submit");
-        submitButton.setAttribute("value", "Create");
+        submitButton.setAttribute("placeholder", "Create");
         newForm.appendChild(submitButton);
       
         newForm.addEventListener('submit', function(event) {
@@ -211,19 +211,19 @@ class App {
       let titleInput = document.createElement('input');
       titleInput.setAttribute("type", "text");
       titleInput.setAttribute("name", "title");
-      titleInput.setAttribute("value", "Workout Title");
+      titleInput.setAttribute("placeholder", "Workout Title");
       form.appendChild(titleInput);
 
       let dateInput = document.createElement('input');
       dateInput.setAttribute("type", "text");
       dateInput.setAttribute("name", "date");
-      dateInput.setAttribute("value", "Workout Date");
+      dateInput.setAttribute("placeholder", "Workout Date");
       form.appendChild(dateInput);
 
       let focusInput = document.createElement('input');
       focusInput.setAttribute("type", "text");
       focusInput.setAttribute("name", "focus");
-      focusInput.setAttribute("value", "Workout Focus");
+      focusInput.setAttribute("placeholder", "Workout Focus");
       form.appendChild(focusInput);
 
       let workoutIdField = document.createElement('input');
