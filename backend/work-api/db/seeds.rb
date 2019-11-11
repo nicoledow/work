@@ -1,5 +1,5 @@
 Workout.create(title: "Compound lifts", focus: "Full Body", date: "11/04/19")
-Workout.create(title: "Upper Body", focus: "Cardio", date: "11/05/19")
+Workout.create(title: "Upper Body", focus: "Strength", date: "11/05/19")
 
 Exercise.create(name: "Bench Press", muscle: "Chest")
 Exercise.create(name: "Squat", muscle: "Quadriceps")
