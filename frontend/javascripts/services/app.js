@@ -27,6 +27,7 @@ class App {
         newForm.appendChild(focusInput);
       
         let submitButton = document.createElement('input');
+        submitButton.className = 'btn-info';
         submitButton.setAttribute("type", "submit");
         submitButton.setAttribute("placeholder", "Create");
         newForm.appendChild(submitButton);
@@ -57,6 +58,7 @@ class App {
         row.appendChild(saveCell);
       
         let button = document.createElement('input');
+        button.className = 'btn-info';
         saveCell.appendChild(button)
         button.setAttribute("type", "submit");
         button.setAttribute("value", "Save");
@@ -88,6 +90,7 @@ class App {
         setForm.appendChild(goalInput);
         
         const setSubmitButton = document.createElement('input');
+        setSubmitButton.className = 'btn-info';
         setSubmitButton.setAttribute("type", "submit")
         setSubmitButton.setAttribute("value", "Add");
         setForm.appendChild(setSubmitButton);

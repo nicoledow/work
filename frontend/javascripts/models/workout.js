@@ -7,7 +7,8 @@ class Workout {
 
   render(object) {
     let div = document.createElement('div');
-    div.className = 'card col';
+    //div.className = 'card row';
+    div.className = 'card-content';
     div.id = object.id;
     workoutContainer.appendChild(div);
     

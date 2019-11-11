@@ -37,6 +37,7 @@ class LiftSet {
     weightCell.appendChild(weightInput);
 
     let saveButton = document.createElement('td');
+    saveButton.className = 'btn-block btn-info';
     row.appendChild(saveButton);
     saveButton.innerHTML = '<input type="submit" value="Save">';
 
