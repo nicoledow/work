@@ -13,7 +13,8 @@ class Api {
     .then(response => response.json())
     .then(function(json){
       App.renderTable(json);
-      App.renderFinishWorkoutButton(workout_id)
+      App.renderLikeButton(workout_id);
+      App.renderFinishWorkoutButton(workout_id);
     })
   }
 
@@ -179,5 +180,16 @@ class Api {
       })
 
     }
+
+  static addLike(workout_id){
+    fetch(`${BASE_URL}workouts/${workout_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({"id": workout_id, "liked": true})
+    })
+  }
      
 }
