@@ -279,5 +279,20 @@ class App {
       })
     }
   }
+
+  static renderLikeButton(id){
+    let likeButton = document.createElement('button');
+    likeButton.className = 'btn-small btn-info';
+    likeButton.innerText = 'Like ♡';
+    likeButton.id = `like-btn-${id}`;
+
+    let workoutDiv = document.getElementById(id);
+    workoutDiv.appendChild(likeButton);
+
+    likeButton.addEventListener('click', function(){
+      likeButton.innerText = 'Liked ♥';
+      Api.addLike(id);
+      })
+  }
         
 }
