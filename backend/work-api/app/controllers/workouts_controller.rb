@@ -7,8 +7,19 @@ class WorkoutsController < ApplicationController
     :lift_sets => {
       :include => [:exercise],
       :except => [:created_at, :updated_at]
+      }
     }
-  }
+    end
+
+    def liked
+      workouts = Workout.liked
+      render json: workouts, :include => {:exercises => 
+        {:only => [:name, :id]},
+      :lift_sets => {
+        :include => [:exercise],
+        :except => [:created_at, :updated_at]
+        }
+      }
     end
 
     def show
