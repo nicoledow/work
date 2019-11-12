@@ -5,5 +5,5 @@ class Workout < ApplicationRecord
     scope :completed, -> { where(completed: true) }
     scope :incomplete, -> { where(completed: false) }
 
-    scope :liked, -> {where(liked: true)}
+    scope :liked, -> { where(liked: true) }
 end
