@@ -29,6 +29,18 @@ class Api {
     })
   }
 
+  getLikedWorkouts() {
+    fetch(`${BASE_URL}workouts/liked`)
+    .then(response => response.json())
+    .then(json => {
+      workoutContainer.innerHTML = "";
+      json.forEach(workoutObj => {
+        const newWorkout = new Workout(workoutObj.title, workoutObj.date, workoutObj.focus);
+        newWorkout.render(workoutObj);
+      })
+    })
+  }
+
     submitNewWorkout(form) {
       fetch(`${BASE_URL}workouts/new`, {
           method: "POST",

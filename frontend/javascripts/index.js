@@ -22,3 +22,7 @@ document.getElementById('PR-btn').addEventListener('click', () => {
 document.getElementById('home-btn').addEventListener('click', () => {
   location.reload();
 })
+
+document.getElementById('liked-workouts-btn').addEventListener('click', () => {
+  api.getLikedWorkouts();
+})
