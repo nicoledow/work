@@ -33,9 +33,9 @@ class WorkoutsController < ApplicationController
       if workout_params[:completed]
         workout.completed = workout_params[:completed]
       else
-        workout.title = workout_params[:title]
-        workout.date = workout_params[:date]
-        workout.focus = workout_params[:focus]
+        workout.title = workout_params[:title] unless workout_params[:title] == ""
+        workout.date = workout_params[:date] unless workout_params[:date] == ""
+        workout.focus = workout_params[:focus] unless workout_params[:focus] == ""
       end
 
       workout.save
