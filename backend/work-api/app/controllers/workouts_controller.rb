@@ -28,10 +28,13 @@ class WorkoutsController < ApplicationController
     end
 
     def update
+      #binding.pry
       workout = Workout.find_by_id(params[:id])
 
       if workout_params[:completed]
         workout.completed = workout_params[:completed]
+      elsif workout_params[:liked]
+        workout.liked = workout_params[:liked]
       else
         workout.title = workout_params[:title] unless workout_params[:title] == ""
         workout.date = workout_params[:date] unless workout_params[:date] == ""
@@ -56,6 +59,6 @@ class WorkoutsController < ApplicationController
 
   private
   def workout_params
-    params.permit(:title, :date, :focus, :id, :completed)
+    params.permit(:title, :date, :focus, :id, :completed, :liked)
   end
 end
