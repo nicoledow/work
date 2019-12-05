@@ -54,7 +54,8 @@ class LiftSet {
     body.appendChild(exerciseHeader);
     body.removeChild(document.getElementById('exercise-list'));
     const table = document.createElement('table');
-    table.id = 'liftset-table'
+    table.id = 'liftset-table';
+    table.className = 'table table-bordered';
     body.appendChild(table);
 
     let firstRow = document.createElement('tr');

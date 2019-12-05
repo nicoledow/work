@@ -18,10 +18,23 @@ td, th {
   margin: 2px;
 }
 
+
 li {
   list-style-type: none;
   padding: 2px;
   margin: 2px;
+}
+
+#exercise-list li {
+  font-weight: bold;
+  color: #622569;
+  font-family: 'Quicksand', sans-serif;
+  padding: 2px;
+  margin: 2px;
+}
+
+ul {
+  text-align: center;
 }
 
 .navbar {
